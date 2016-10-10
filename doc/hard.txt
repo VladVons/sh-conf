@@ -1,0 +1,99 @@
+#--- VladVons@gmail.com, oster.com.ua
+
+Network LAN
+------------------------------------------------------------------------
+Wired ethernet Asus K50C. Chip Realtek 8168/8111:
+
+edit: /etc/default/grub and add "pci=nomsi" to following line
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nomsi"
+execute: update-grub
+
+xserver-xorg-video-sis-lts-trusty
+
+
+Network Wireless Wifi
+dell inspiron wireless. Chip BCM43142
+------------------------------------------------------------------------
+?firmware-b43-installer
+?apt-get install --reinstall --yes linux-image-$(uname -r)
+?apt-get install --reinstall --yes bcmwl-kernel-source
+?modprobe wl
+?update-pciids
+
+? http://askubuntu.com/questions/459654/drivers-for-broadcom-bcm43142-on-ubuntu-14-04-trusty-tahr
+? http://askubuntu.com/questions/402341/how-to-enable-drivers-for-bcm43142
+? http://ubuntuforums.org/showthread.php?t=2214110
+? http://askubuntu.com/questions/550638/ubuntu-14-04-wireless-not-working-properly-in-dell-inspiron-n5110
+
+
+Video
+------------------------------------------------------------------------
+SiS 771/671 ubuntu 14.04 - unresolved
+http://forum.ubuntu.ru/index.php?topic=245872.0
+http://www.vivaolinux.com.br/dica/Configurando-SIS-67172-no-Ubuntu-1404
+
+
+Webcamera
+------------------------------------------------------------------------
+google keywords: Built in WebCam
+
+Webcam upside down when using skype 
+apt-get --yes install libv4-0 v4l2ucp
+
+locate v4l1compat.so
+
+32bit:
+LD_PRELOAD=/usr/lib/i386-linux-gnu/libv4l/v4l1compat.so skype
+64bit:
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libv4l/v4l1compat.so skype
+
+
+Printer
+------------------------------------------------------------------------
+Canon mf4350d
+apt-get install libc6-i386 lib32z1 ia32-libs
+http://ubuntuforums.org/showthread.php?t=1427330
+https://answers.launchpad.net/ubuntu/+source/cups/+question/79913
+http://www.usa.canon.com/cusa/support/consumer/printers_multifunction/imageclass_series/imageclass_mf4350d#DriversAndSoftware
+
+Canon LBP
+http://help.ubuntu.ru/wiki/canon_capt
+http://support-asia.canon-asia.com/contents/ASIA/EN/0100459601.html
+
+
+Grub2 menu
+------------------------------------------------------------------------
+http://askubuntu.com/questions/141940/how-to-boot-from-non-ubuntu-live-iso-images-like-fedora-or-centos
+http://help.ubuntu.ru/wiki/%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B0_ubuntu_%D1%81_iso
+http://ubuntuforums.org/showthread.php?t=1549847
+http://askubuntu.com/questions/636952/help-creating-custom-grub2-entry-for-parted-magic-2015-have-working-2013
+
+menuentry "Hiren's boot CD" {
+    set isofile="/boot/iso/hiren_15.iso"
+    linux16 /boot/iso/memdisk iso
+    initrd16 (hd0,2)$isofile
+}
+
+
+Mount LVM
+------------------------------------------------------------------------
+apt-get install lvm2
+modprobe dm-mod
+vgscan
+vgchange -ay us64-oster-vg
+lvs
+mkdir -p /mnt/hdd/data2
+mount /dev/us64-oster-vg/home /mnt/hdd/data2
+
+
+Brightness control 
+------------------------------------------------------------------------
+ls /sys/class/backlight
+
+touch /usr/share/X11/xorg.conf.d/20-intel.conf
+Section "Device"
+        Identifier  "card0"
+        Driver      "intel"
+        Option      "Backlight"  "intel_backlight"
+        BusID       "PCI:0:2:0"
+EndSection

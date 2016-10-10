@@ -1,0 +1,7 @@
+install latest wine
+install playonlinux
+
+playonlinux-> install->firefox
+playlinux->configure->Install components->mfc42
+firefox->HikvisionIP ... download plugin WebComponents.exe 
+playonlinux->miscelanious->Run exe in virtual ... choose WebComponents.exe

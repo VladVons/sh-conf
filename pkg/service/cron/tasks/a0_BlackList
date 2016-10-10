@@ -1,0 +1,111 @@
+#!/bin/bash
+#--- VladVons@gmail.com
+# see also: https://freeswitch.org/confluence/display/FREESWITCH/Fail2Ban
+
+Limit=50
+
+
+Log_freeswitch()
+{
+  #/usr/local/freeswitch/conf/sip_profile/internal.xml
+  # <param name="log-auth-failures" value="true"/>
+
+  Log="/usr/local/freeswitch/log/freeswitch.log"
+  #Today=$(date +%Y-%m-%d)
+
+  grep "Can't find user" $Log | grep "$Today" | grep "from" | awk '{print $NF}'
+  grep "SIP auth failure" $Log | grep "$Today" | awk '{print $NF}'
+  #grep "Rejected by acl" $Log | grep "$Today" | awk '{print $6}'  
+}
+
+
+Log_ssh()
+{
+  Log="/var/log/auth.log"
+
+  grep "Failed password" $Log | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+  grep "Invalid user" $Log | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+  grep "not allowed because none of user" $Log | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+}
+
+
+Log_pureftpd()
+{
+  Log="/var/log/syslog"
+  grep "pure-ftpd" $Log | grep "Authentication failed" | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+}
+
+
+Logs()
+{
+  echo "freeswitch"
+  Log_freeswitch | sort | uniq --count
+
+  echo "ssh"
+  Log_ssh | sort | uniq --count
+
+  echo "pureftpd"
+  Log_pureftpd | sort | uniq --count
+}
+
+
+BlockedIP()
+{
+  iptables -L INPUT -n | grep "DROP" | grep "all"
+}
+
+
+BlockIP()
+{
+  aParser=$1;
+
+  $aParser | sort | uniq --count | \
+  while read Str; do
+    Cnt=$(echo $Str | awk '{print $1}')
+    IP=$(echo $Str | awk '{print $2}')
+
+    if [ $Cnt -gt $Limit ]; then
+      FoundIP=$(BlockedIP | grep $IP)
+      if [ -z "$FoundIP" ]; then
+        echo "Block IP $IP '$aParser'"
+        iptables -A INPUT -s "$IP" -j DROP
+        #iptables -A INPUT -s "$IP" -j DROP -m comment --comment "$aParser"
+      fi;
+    fi
+  done;
+}
+
+
+UnblockIP()
+{
+  BlockedIP | \
+  while read Str; do
+    IP=$(echo $Str | awk '{print $4}')
+    echo "Unblock IP $IP"
+    iptables -D INPUT -s "$IP" -j DROP
+  done;
+}
+
+
+Refresh()
+{
+  echo 
+  UnblockIP
+  echo 
+  BlockIP "Log_freeswitch"
+  echo 
+  BlockIP "Log_ssh"
+  echo 
+  BlockIP "Log_pureftpd"
+  echo
+  BlockedIP
+}
+
+
+#-----------
+case $1 in
+    Logs)	$1 ;;
+    BlockedIP)	$1 ;;
+    UnblockIP)	$1 ;;
+    *)		Refresh ;;
+esac

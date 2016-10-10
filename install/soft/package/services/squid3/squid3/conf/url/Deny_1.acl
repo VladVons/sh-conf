@@ -1,0 +1,45 @@
+#--- block IP addressing
+tp://[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+[:/]
+
+# anonymizer
+prox
+anonym
+cameleo.ru
+translate.google.com
+translate.google.com.ua
+translate.google.ru
+cache.google.com
+webcache.googleusercontent
+workandtalk.ru
+
+# chats
+#odnoklas
+vkontakte
+my.mail.ru
+foto.mail.ru
+auto.mail.ru
+.vk.com
+userapi.com 
+connect.ua
+bizcode.ru
+keybin.ru
+finproc.ru
+facebook
+
+# portal
+.i.ua
+
+# video
+rutube.ru
+youtube
+video.google
+googlevideo.com
+
+# game
+games
+football
+uefa
+
+# teamviewer
+teamviewer
+dyngate.com

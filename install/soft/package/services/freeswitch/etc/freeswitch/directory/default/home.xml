@@ -1,0 +1,19 @@
+<include>
+    <user id="2004">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+    	    <variable name="user_context" value="default"/>
+            <variable name="effective_caller_id_name" value="Ruska 24 LynkSys"/>
+        </variables>
+    </user>
+    <user id="2005">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+            <variable name="effective_caller_id_name" value="Ruska 24 LynkSys"/>
+        </variables>
+    </user>
+</include>

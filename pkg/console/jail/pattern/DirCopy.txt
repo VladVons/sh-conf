@@ -1,0 +1,3 @@
+/etc/profile.d
+/lib/terminfo
+/usr/lib/apt/methods

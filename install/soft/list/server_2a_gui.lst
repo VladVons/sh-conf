@@ -1,0 +1,21 @@
+# minimal GUI
+#
+adobe-flashplugin.tpl
+flashplugin-installer.tpl
+doublecmd-gtk.tpl
+firefox.tpl
+transgui.tpl
+conky.tpl
+rdesktop.tpl
+xpdf.tpl
+tightvncserver.tpl
+vnc4server.tpl
+gparted.tpl
+gsmartcontrol.tpl
+gufw.tpl
+java.tpl
+hardinfo.tpl
+lxtask.tpl
+lxde-core.tpl
+lxterminal.tpl
+xserver-xorg-min.tpl

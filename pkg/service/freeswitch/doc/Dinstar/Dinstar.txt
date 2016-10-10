@@ -1,0 +1,91 @@
+DinStar 2000E :
+http://wiki.freeswitch.org/wiki/Dinstar_GSM_gateway_FreeSwitch_HowTo
+http://dinstar.ru/up/shop/file/dinstardwgiasterisk_nastroika.pdf
+
+Default IP: 192.168.11.1
+
+Statistics
+    CDR Report
+	Enable CDR: yes
+	Save CDR: yes
+
+
+Network Configuration
+    Local network
+	Obtain IP address automatically
+	Obtain DNS server address automatically
+
+
+Mobile Configuration
+    Phone Number Config
+
+
+Routing Configuration
+    IP->Tel Routing
+	Description: KStar
+	Source Prefix: any
+	Source IP: IP Any
+	Destination Prefix:	(067|068|096|097|098)xxxxxxx
+				(050|066|095|099)xxxxxxx
+				(063|073|093)xxxxxxx
+	Destination
+	    Port Group: KStar
+
+
+Operation
+    Tel-IP Operation
+	Source Port: Port any
+	Auto Call: 1
+
+
+Port Group Configuration
+    Port Group (0-x)
+	Description: KStar
+	SIP User ID: x
+	Authenticate Password: x
+	Select Mode: Cyclic Ascending
+	Port: 0,1
+
+
+System Configuration
+    Media Parameter
+	Enable Silence Suppression: no
+	Call Progress Tone: Russia
+	DTMF Method: RFC2833
+	DTMF Volume: +2 db
+	Preferred Coders 1: PCMA
+	Preferred Coders 2: PCMU
+
+    SIP Parameter
+	Is Register: yes
+	SIP Server Address: oster.te
+	All Ports Register Used Same User ID: yes
+	From Mode when Caller ID Is Available: Tel/Tel
+
+    Port Parameter->Detail (Port 0-4)
+	Current Port: x
+	SIP User ID: x
+	Authenticate Password: x
+	To VOIP Hotline: 3100
+
+Human Behavior
+    Balance Check
+	Type: USSD
+	Send Text: *111#
+	Port Group: KStar
+	Check Balance Every: 720
+	
+
+Tools
+    Syslog
+	Local Syslog: yes
+	Server Address: oster.te
+	Server Port: 514
+	Syslog Level: INFO
+	Signal,Media,System,Management,Send CDR: Enabled
+
+    Management Parameter
+	Time Zone: +2
+
+    Autorestart: yes
+	0:0

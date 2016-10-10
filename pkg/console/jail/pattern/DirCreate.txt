@@ -1,0 +1,24 @@
+/bin
+/dev
+/etc
+/home
+/lib
+/lib64
+/tmp
+/usr
+/usr/sbin
+/usr/bin
+/var
+/var/log
+/sbin
+/proc/net
+/root
+
+# apt-get utils
+/etc/apt/apt.conf.d
+/etc/apt/preferences.d
+/var/cache/apt/archives/partial
+/var/lib/apt/lists/partial
+/var/lib/dpkg
+/var/lib/dpkg/updates
+/var/lib/dpkg/info

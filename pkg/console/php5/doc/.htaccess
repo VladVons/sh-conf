@@ -1,0 +1,6 @@
+Options -MultiViews +Indexes
+
+#DefaultLanguage ua
+#AddDefaultCharset windows-1251
+#php_value default_charset "cp1251"
+

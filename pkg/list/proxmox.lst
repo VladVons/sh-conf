@@ -1,0 +1,36 @@
+#--- 
+# ProxMox debian VM server
+# VladVons@gmail.com
+#---
+
+
+#--- file manager
+mc
+
+#--- info
+htop
+iftop
+iotop
+
+#--- ups
+apcupsd
+apcupsd-cgi
+#nut
+
+#--- services
+collectd
+#fail2ban
+monit
+samba
+
+#--- HDD services
+smartmontools
+hddtemp
+
+#--- mouse
+gpm
+
+#--- internet
+dnsutils
+lynx
+git

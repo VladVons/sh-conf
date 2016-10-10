@@ -1,0 +1,1 @@
+/usr/local/etc/no-ip2.conf

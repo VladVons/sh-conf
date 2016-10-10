@@ -1,0 +1,9 @@
+<include>
+    <gateway name="intertelecom.ua">
+	<param name="realm" value="sip.intertelecom.ua"/>
+	<param name="username" value="352420525"/>
+	<param name="password" value="Inter420525"/>
+	<param name="register" value="true"/>
+	<param name="expire-seconds" value="360"/>
+    </gateway>
+</include>

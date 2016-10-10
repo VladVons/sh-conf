@@ -1,0 +1,2 @@
+DAEMON=/usr/local/freeswitch/bin/freeswitch
+CONFDIR=/usr/local/freeswitch/conf

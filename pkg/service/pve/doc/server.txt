@@ -1,0 +1,11 @@
+Proxmox VE Container (LXC) configuration files
+https://pve.proxmox.com/wiki/Manual:_pct.conf
+
+user quota vps proxmox
+
+
+Создание надёжного iSCSI-хранилища на Linux,
+http://habrahabr.ru/post/209460/
+
+http://habrahabr.ru/users/blind_oracle/topics/
+

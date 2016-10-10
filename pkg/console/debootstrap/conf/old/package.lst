@@ -1,0 +1,148 @@
+#--- VladVons@gmail.com
+
+
+#--- GUI core
+xserver-xorg
+xinit
+xterm
+
+
+#--- WM lxde minimal
+#lxde-core
+#lxterminal
+#lxtask
+
+
+#--- WM lxde all
+lxde
+
+
+#--- GUI login
+lxdm
+
+
+#--- WM xfce4
+#xfce4
+#xfce4-goodies
+#xfce4-power-manager-plugins
+
+
+#--- WM other
+#icebox
+#fluxbox
+
+
+#--- Remote desktop
+remmina
+rdesktop
+freerdp-x11
+gvncviewer
+
+
+#--- Internet browser
+firefox
+firefox-locale-uk
+
+chromium-browser
+pidgin
+
+flashplugin-installer
+icedtea-plugin
+
+
+#--- Office 
+libreoffice
+libreoffice-l10n-uk
+
+gimp
+inkscape
+djview
+xpdf
+xsane
+
+
+#--- education
+goldendict
+bibletime
+audacity
+
+
+#--- archiver
+p7zip-full
+zip
+unzip
+
+
+#--- File manager
+mc
+doublecmd-gtk
+
+
+#--- Media
+vlc
+kodi
+audacious
+radiotray
+guvcview
+winff
+
+
+#--- Codec
+gstreamer0.10-alsa
+gstreamer0.10-plugins-ugly
+sox
+ffmpeg
+flac
+
+
+#--- Audio utils
+linux-sound-base
+libasound2
+alsa-utils
+alsa-base
+pulseaudio
+pavucontrol
+
+
+#--- Tools
+hardinfo
+conky
+unetbootin
+gparted
+zenmap
+
+
+#--- System
+pkg-config
+
+
+#--- Service
+htop
+iftop
+iotop
+
+
+#--- Service
+openssh-server 
+ntpdate
+rsync
+
+
+#--- Development
+mysql-workbench
+geany
+
+
+#--- Emulator
+dosbox
+
+#--- Games
+gnome-games
+
+
+#--- School level packages
+#ubuntu-edu-secondary
+
+
+#--- University level packages
+#ubuntu-edu-tertiary

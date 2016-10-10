@@ -1,0 +1,5 @@
+PostgreSQL
+   Database name: fusionpbx
+   Database username: fusionpbx
+   Database password: QEMNyXrg0yUHisVuRg1rUx/lc6U=
+

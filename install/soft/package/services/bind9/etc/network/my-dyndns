@@ -1,0 +1,15 @@
+#!/bin/sh
+
+
+# shell variable $DIR_ADMIN not found. So force it. ???
+. /etc/environment 
+
+. $DIR_ADMIN/conf/Common.sh
+
+
+Log "$0->$FUNCNAME, IFACE:$IFACE, MODE:$MODE, ADDRFAM:$ADDRFAM, LOGICAL:$LOGICAL"
+
+if [ "$IFACE" = "$gExtIf" ]; then
+  #cd /admin/conf/server/bind9
+  #./_script.sh ClientUpdate
+fi

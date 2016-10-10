@@ -1,0 +1,27 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+oster.com.ua		IN SOA	ns.oster.com.ua. vladvons.gmail.com. (
+				2015090315 ; serial
+				10800      ; refresh (3 hours)
+				900        ; retry (15 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	ns.oster.com.ua.
+			NS	ns.secondary.net.ua.
+			A	5.58.6.236
+			MX	10 ASPMX.L.GOOGLE.COM.
+$ORIGIN oster.com.ua.
+download		CNAME	oster.com.ua.
+modx1			CNAME	oster.com.ua.
+modx2			CNAME	oster.com.ua.
+ns			A	5.58.6.236
+oc1			CNAME	oster.com.ua.
+oc2			CNAME	oster.com.ua.
+test			CNAME	oster.com.ua.
+tr24			CNAME	oster.com.ua.
+$TTL 3600	; 1 hour
+tk22			A	46.118.136.25
+tr21			A	188.163.32.146
+tr41			A	193.169.80.33
+tz20			A	5.58.92.201

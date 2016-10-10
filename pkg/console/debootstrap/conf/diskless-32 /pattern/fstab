@@ -1,0 +1,15 @@
+#--- http://linux-ubuntu.info
+# src: /etc/fstab
+
+proc            /proc           proc    defaults        0       0
+/dev/nfs        /               nfs     defaults        1       1
+none            /tmp            tmpfs   defaults        0       0
+none            /var/run        tmpfs   defaults        0       0
+none            /var/lock       tmpfs   defaults        0       0
+none            /var/tmp        tmpfs   defaults        0       0
+
+# Samba sharing
+#//192.168.2.1/temp     /mnt/smb/tr24  cifs username=guest,password=guest,iocharset=utf8,sec=ntlm,uid=1000,rw  0  0
+
+# NFS sharing
+#192.168.2.1:/home/disk-d   /mnt/nfs/disk-d   nfs    ro,noauto,noatime,nolock,vers=3   0   0

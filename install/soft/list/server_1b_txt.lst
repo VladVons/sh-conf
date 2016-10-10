@@ -1,0 +1,10 @@
+# company server 
+#
+syslinux.tpl
+apt-cacher-ng.tpl
+clamav.tpl
+isc-dhcp-server.tpl
+openvpn.tpl
+samba.tpl
+ssmtp.tpl
+subversion.tpl

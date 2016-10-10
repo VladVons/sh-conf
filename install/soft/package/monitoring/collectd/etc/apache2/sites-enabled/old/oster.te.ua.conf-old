@@ -1,0 +1,160 @@
+#/usr/share/phpvirtualbox
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/enabled/3w_oster/public_html"
+    ServerName oster.te.ua
+    ServerAlias www.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_access.log combined
+
+    <Directory "/var/www/enabled/3w_oster/public_html">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    Alias /vb "/usr/share/phpvirtualbox/"
+    <Directory "/usr/share/phpvirtualbox">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    # CGP (collectd grophic panel)
+    Alias /cgp "/var/www/app/cgp/"
+    <Directory "/var/www/app/cgp/">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    <Location /svn/LyricTxt>
+        #DAV svn
+	#SVNPath /mnt/data1/db/svn/LyricTxt
+        ##SVNParentPath /mnt/data1/db/svn/LyricTxt
+        ##SVNListParentPath on
+        #SVNIndexXSLT "/repos-web/view/repos.xsl"
+
+	#AddCharset UTF-8 .pro
+        #AddType "text/plain; charset=UTF-8" .pro
+        #AddLanguage ru .pro
+    </Location>
+
+    <Location /svn/PasSrc>
+        DAV svn
+        SVNPath /mnt/data1/db/svn/PasSrc
+        AuthType Basic
+        AuthName "Lazarus projects"
+        AuthUserFile /etc/subversion/passwd-jdv
+        Require valid-user
+
+	RemoveHandler .php
+	RemoveType .php
+	AddHandler php5-script .php
+	AddType application/x-httpd-php-source .php
+	ForceType application/x-httpd-php-source
+    </Location>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/enabled/3w_oster/upload_html"
+    ServerName upload.oster.te.ua
+    ServerAlias download.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te_upload.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_upload_access.log combined
+
+    <Directory "/var/www/enabled/3w_oster/upload_html">
+        Options Indexes FollowSymLinks 
+	IndexOptions +SuppressDescription
+	AddDescription "File sharing for friends" MyInfo.html 
+        AllowOverride Options AuthConfig Indexes
+        Order allow,deny
+	Allow from all
+    </Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/enabled/3w_oster/public_html_modx1"
+    ServerName modx1.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te_modx1.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_modx1_access.log combined
+
+    <Directory "/var/www/enabled/3w_oster/public_html_modx1">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/enabled/3w_oster/public_html_modx2"
+    ServerName modx2.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te_modx2.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_modx2_access.log combined
+
+    <Directory "/var/www/enabled/3w_oster/public_html_modx2">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "/mnt/data1/var/www/enabled/3w_oster_te/public_html"
+    ServerName oc2.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te_oc2.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_oc2_access.log combined
+
+    <Directory "/mnt/data1/var/www/enabled/3w_oster_te/public_html">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/enabled/3w_oster/public_html_oc1"
+    ServerName oc1.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te_oc1.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_oc1_access.log combined
+
+    <Directory "/var/www/enabled/3w_oster/public_html_oc1">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/enabled/3w_oster/public_html_test"
+    ServerName test.oster.te.ua
+
+    ErrorLog ${APACHE_LOG_DIR}/3w_oster_te_test.log
+    CustomLog ${APACHE_LOG_DIR}/3w_oster_te_test_access.log combined
+
+    <Directory "/var/www/enabled/3w_oster/public_html_test">
+        Options Indexes FollowSymLinks
+	AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>

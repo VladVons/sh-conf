@@ -1,0 +1,131 @@
+#mysql_install_db
+
+#set password:
+#mysqladmin -u root password 'NEWPASSWORD'
+#change password:
+#mysqladmin -u root -p oldpassword oldpassword newpass
+
+#OR:
+#mysql -u root -p
+#use mysql;
+#update user set password=PASSWORD("NEWPASSWORD") where User='root';
+#flush privileges;
+
+GRANT ALL PRIVILEGES ON 3w_kinder_modex.* TO 'kinder_modex'@'%' IDENTIFIED BY 'kinder_modex' WITH GRANT OPTION;
+#GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '19710819' WITH GRANT OPTION;
+
+#mysqldump -u root  -h localhost -p19710819 3w_znay_wiki | zip > 3w_znay_wiki.sql.zip
+#mysql -u root  -h localhost -p19710819 3w_znay_wiki < dump.txt 
+
+#GRANT ALL PRIVILEGES ON 3w_oster_oscComputer.* TO 'VladVons'@'192.168.2.%' IDENTIFIED BY '19710819' WITH GRANT OPTION;
+
+#Grants:
+#GRANT ALL PRIVILEGES ON *.* TO 'VladVons'@'192.168.2.101' IDENTIFIED BY '19710819' WITH GRANT OPTION;
+#GRANT ALL PRIVILEGES ON *.* TO 'VladVons'@'localhost' IDENTIFIED BY '19710819' WITH GRANT OPTION;
+
+#CREATE DATABASE app_postfix; 
+#GRANT ALL PRIVILEGES ON app_postfix.* TO 'postfix'@'localhost' IDENTIFIED BY 'post2009' WITH GRANT OPTION;
+
+#CREATE DATABASE 3w_oster_sugarcrm; 
+#GRANT ALL PRIVILEGES ON 3w_oster_sugarcrm.* TO 'sugarcrm'@'localhost' IDENTIFIED BY '19710819' WITH GRANT OPTION;
+
+#CREATE DATABASE 3w_znay_wiki; 
+#GRANT ALL PRIVILEGES ON 3w_znay_wiki.* TO '3w_znay_wiki'@'localhost' IDENTIFIED BY 'Wiki2009' WITH GRANT OPTION;
+
+#CREATE DATABASE 3w_znay_phpbb; 
+#GRANT ALL PRIVILEGES ON 3w_znay_phpbb.* TO '3w_znay_phpbb'@'localhost' IDENTIFIED BY 'PhpBB2009' WITH GRANT OPTION;
+
+#CREATE DATABASE 3w_jdvsoft_phpbb; 
+#GRANT ALL PRIVILEGES ON 3w_znay_phpbb.* TO '3w_znay_phpbb'@'localhost' IDENTIFIED BY 'PhpBB2009' WITH GRANT OPTION;
+
+#GRANT ALL PRIVILEGES ON app_asterisk.* TO 'asterisk'@'localhost' IDENTIFIED BY 'asterisk2009' WITH GRANT OPTION;
+
+CREATE DATABASE app_front_office3; 
+#GRANT ALL PRIVILEGES ON app_front_office.* TO 'front_office'@'localhost' IDENTIFIED BY 'Qwerty' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON app_front_office3.* TO 'front_office'@'%' IDENTIFIED BY 'Qwerty' WITH GRANT OPTION;
+GRANT SELECT ON app_front_office.* TO 'ReadOnly'@'%' IDENTIFIED BY 'ReadOnly' WITH GRANT OPTION;
+#???GRANT CREATE ROUTINE, ALTER ROUTINE, EXECUTE ON app_front_office.* TO 'front_office'@'192.168.%' IDENTIFIED BY 'Qwerty' WITH GRANT OPTION;	
+GRANT ALL PRIVILEGES ON app_front_office_demo.* TO 'Demo'@'%' IDENTIFIED BY 'Demo' WITH GRANT OPTION;
+
+#CREATE DATABASE 3w_znay_phpbb; 
+#GRANT ALL PRIVILEGES ON 3w_oster_mantisbt.* TO 'mantisbt'@'192.168.2.111' IDENTIFIED BY 'mantisbt2009' WITH GRANT OPTION;
+#GRANT ALL PRIVILEGES ON 3w_devel_phpbb.* TO 'devel_phpbb'@'localhost' IDENTIFIED BY 'phpbb2009' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 3w_jdvsoft_mantisbt.* TO 'jdvsoft_mantisbt'@'localhost' IDENTIFIED BY 'mantisbt2012' WITH GRANT OPTION;
+
+#CREATE DATABASE app_test1; 
+#GRANT ALL PRIVILEGES ON app_test1.* TO 'app_test1'@'192.168.2.111' IDENTIFIED BY 'app_test1' WITH GRANT OPTION;
+
+#GRANT REPLICATION SLAVE ON *.* TO  'replication'@'192.168.2.101' IDENTIFIED BY 'slavepass1';
+
+#CREATE DATABASE app_ternopil; 
+#GRANT ALL PRIVILEGES ON app_ternopil.* TO 'app_ternopil'@'%' IDENTIFIED BY 'Qwerty' WITH GRANT OPTION;
+#mysql -u root -h localhost -p19710819 app_ternopil < Code.sql
+#
+create database 3w_opencart_test
+GRANT ALL PRIVILEGES ON 3w_oster_opencart.* TO 'oster_opencart'@'localhost' IDENTIFIED BY 'opencart' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 3w_kinder_opencart.* TO 'kinder_opencart'@'192.168.%' IDENTIFIED BY 'opencart' WITH GRANT OPTION;
+ 
+
+Replication. OnMaster:
+http://tokarchuk.ru/2010/06/multi-master-%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2-mysql/
+http://www.ibm.com/developerworks/ru/library/os-mysql-postgresql/06/
+sync_binlog=1
+mysqlbinlog binlog.000001 > filename.txt
+
+# Doesnt work: GRANT REPLICATION SLAVE ON *.* TO  'repluser2'@'192.168.4.2' IDENTIFIED BY 'QwertyJd';
+GRANT REPLICATION SLAVE ON *.* TO 'repluser2'@'%' IDENTIFIED BY 'QwertyJd';
+GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'repluser2'@'10.10.10.14' IDENTIFIED BY 'QwertyJd';
+GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'repluser2'@'192.168.2.%' IDENTIFIED BY 'QwertyJd';
+    
+SHOW master STATUS;
+
+STOP SLAVE;
+CHANGE MASTER TO MASTER_HOST='10.10.10.14', MASTER_USER='repluser2', MASTER_PASSWORD='QwertyJd', MASTER_cPort=3306;
+CHANGE MASTER TO MASTER_HOST='10.10.10.1', MASTER_USER='repluser2', MASTER_PASSWORD='QwertyJd', MASTER_cPort=3306, MASTER_LOG_FILE='mysql-bin.000002', MASTER_LOG_POS=4717;
+START SLAVE;
+
+FLUSH PRIVILEGES;
+
+SHOW SLAVE STATUS\G;
+First line must be: Slave_IO_State: Waiting for master to send event
+
+PURGE MASTER LOGS TO 'mysql-bin.000040';
+
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+/* CHECKSUM or SELECT COUNT(*) on table(s) */
+UNLOCK TABLES;
+
+
+#---disable replication
+#MySQL Commands:
+    STOP SLAVE;
+    RESET SLAVE;
+    change master to master_host='', master_user='',  master_password='';
+#/etc/my.cnf
+    skip-slave-start
+
+
+# test perfomance 
+mysqlslap --query="select user_name from test where user_id=1" --number-of-queries=10000000 --concurrency=30 --host=xxx --uroot
+vmstat 1
+man hwpmc    
+
+
+#---------- 1.6M records
+mysqldump --user=root --password=19710819 --routines app_front_office > app_front_office_b.sql
+TZ20 = 1m 25s
+TR24 = 0m 20s
+
+\. /mnt/data1/share/Temp/app_front_office_b.sql
+TR24 = 05m 20s
+tr41 = 11m 30s (bsd32)
+tr41 = 25m 30s (us64)
+tz20 = 15m 15s (bsd32)
+tz20 = 30m 00s (us64)
+
+
+ALTER TABLE `fe_orders_total` ADD INDEX `fe_orders_total_idx1` (`orders_id`);
+TR24 = 0m 03s
+TR41 = 0m 13s
+

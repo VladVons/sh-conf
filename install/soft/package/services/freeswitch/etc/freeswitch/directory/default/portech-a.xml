@@ -1,0 +1,10 @@
+<include>
+  <user id="2003">
+    <params>
+      <param name="password" value="oster2015"/>
+    </params>
+    <variables>
+        <variable name="effective_caller_id_name" value="Portech GSM Gateway"/>
+    </variables>
+   </user>
+</include>

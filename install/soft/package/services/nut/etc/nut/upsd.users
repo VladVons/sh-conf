@@ -1,0 +1,8 @@
+#--- VladVons
+[admin]
+password = 19710819
+#allowfrom = localhost
+actions = SET
+instcmds = ALL
+upsmon master
+

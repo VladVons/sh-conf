@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>            
+<include>
+  <context name="default">
+    <extension name="unloop">
+      <condition field="$${unroll_loops}" expression="^true$"/>
+      <condition field="${sip_looped_call}" expression="^true$">
+        <action application="deflect" data="${destination_number}"/>
+      </condition>
+    </extension>
+
+    <extension name="WorkDay" continue="true">
+	<condition wday="2-5" hour="9-19">
+	    <action application="set" data="open=true"/>
+	</condition>
+	<condition wday="6" hour="9-17">
+	    <action application="set" data="open=true"/>
+	</condition>
+    </extension>
+
+    <extension name="HoliDay" continue="true">
+	<condition mday="1" mon="1">
+    	    <!-- new year -->
+	    <action application="set" data="open=false"/>
+	</condition>
+	<condition mday="1" mon="7">
+    	    <!-- christmas -->
+	    <action application="set" data="open=false"/>
+	</condition>
+	<condition mday="28" mon="6">
+    	    <!-- constitution -->
+	    <action application="set" data="open=false"/>
+	</condition>
+	<condition mday="24" mon="8">
+    	    <!-- independence -->
+	    <action application="set" data="open=false"/>
+	</condition>
+    </extension>
+
+
+   <X-PRE-PROCESS cmd="include" data="default/*.xml"/>
+  </context>
+</include>

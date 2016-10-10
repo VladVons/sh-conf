@@ -1,0 +1,37 @@
+#!/bin/sh
+# VladVons
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin
+
+trap "exit 0" SIGTERM
+
+
+OnLine() 
+{
+ echo "$0: OnLine() power restored" | wall
+ killall -s SIGTERM $(basename $0)
+}
+
+
+OnBatt()
+{
+ echo "$0: OnBatt() 10 minutes till system powers down ..." | wall
+ n=600
+ while [ $n -ne 0 ]
+ do
+    sleep 1
+    n=$(expr $n - 1)
+ done
+
+ echo $0: shutting down now ... | wall
+ upsmon -c fsd
+}
+
+
+if [ "$NOTIFYTYPE" = "ONBATT" ]; then
+ OnBatt
+fi
+
+if [ "$NOTIFYTYPE" = "ONLINE" ]; then
+ OnLine
+fi

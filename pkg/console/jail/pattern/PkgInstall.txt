@@ -1,0 +1,17 @@
+mc
+zip
+unzip
+nano
+htop
+rsync
+vlc
+
+xserver-xorg
+lxde
+lxtask
+firefox
+remmina
+rdesktop
+conky
+xpdf
+hardinfo

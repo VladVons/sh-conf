@@ -1,0 +1,15 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+set -e
+
+# (hd0,2) = /dev/sda2
+
+#menuentry "Hiren's boot CD" {
+#    set isofile="/boot/iso/hiren_15.iso"
+#    linux16 /boot/iso/memdisk iso
+#    initrd16 (hd0,2)$isofile
+#}

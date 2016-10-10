@@ -1,0 +1,42 @@
+<include>
+    <user id="5011">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+            <variable name="effective_caller_id_name" value="Романишин Сергій"/>
+        </variables>
+    </user>
+    <user id="5012">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+            <variable name="effective_caller_id_name" value="Дишкант Катерина"/>
+        </variables>
+    </user>
+    <user id="5021">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+            <variable name="effective_caller_id_name" value="Остап Гуйда"/>
+        </variables>
+    </user>
+    <user id="5022">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+            <variable name="effective_caller_id_name" value="Володя"/>
+        </variables>
+    </user>
+    <user id="5023">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+            <variable name="effective_caller_id_name" value="Андрій Дишкант"/>
+        </variables>
+    </user>
+</include>

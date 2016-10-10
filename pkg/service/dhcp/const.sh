@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $DIR_ADMIN/conf/script/const.sh
+
+cApp="dhclient"
+
+cProcess="$cApp"
+cLog1="$gFileSysLog"

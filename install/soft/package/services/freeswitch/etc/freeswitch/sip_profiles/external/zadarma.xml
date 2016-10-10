@@ -1,0 +1,9 @@
+<include>
+    <gateway name="zadarma.com">
+	<param name="realm" value="sip.zadarma.com"/>
+	<param name="username" value="352422"/>
+	<param name="password" value="fny8Z3auX8"/>
+	<param name="register" value="true"/>
+	<param name="expire-seconds" value="3600"/>
+    </gateway>
+</include>

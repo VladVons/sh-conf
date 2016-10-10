@@ -1,0 +1,165 @@
+#--- VladVons
+set daemon  180
+with start delay 120
+
+#set logfile syslog facility log_daemon
+set logfile /var/log/monit.log
+
+set idfile /var/lib/monit/id
+set statefile /var/lib/monit/state
+
+#set MAILSERVER smtp.gmail.com PORT 465 USERNAME "VladVons" PASSWORD "19710819vlad" USING TLSV1
+set alert vladvons@mail.ru
+
+set mailserver localhost
+#set alert root@localhos
+
+set httpd port 2812 and
+    #use address localhost  # only accept connection from localhost
+    allow localhost
+    allow 192.168.2.0/255.255.255.0 
+    allow admin:monit2015   # require user 'admin' with password 'monit'
+
+
+#check system localhost
+#    if loadavg (1min) > 4 then alert
+#    if loadavg (5min) > 2 then alert
+#    if memory usage > 75% then alert
+#    if swap usage > 25% then alert
+#    if cpu usage (user) > 70% then alert
+#    if cpu usage (system) > 30% then alert
+#    if cpu usage (wait) > 20% then alert
+
+
+#--- fail2ban
+check process fail2ban with pidfile /var/run/fail2ban/fail2ban.pid
+    start program = "/etc/init.d/fail2ban start"
+    stop program  = "/etc/init.d/fail2ban stop"
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- SSH 
+check process sshd with pidfile /var/run/sshd.pid
+    start program = "/etc/init.d/ssh start"
+    stop program  = "/etc/init.d/ssh stop"
+    if failed port 22 protocol ssh then restart
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- DNS (bind)
+check process named with pidfile /var/run/named/named.pid
+    start program = "/etc/init.d/bind9 start"
+    stop program  = "/etc/init.d/bind9 stop"
+    if cpu > 60% for 2 cycles then alert
+    if cpu > 85% for 5 cycles then restart
+    if failed port 53 protocol dns then restart
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- Check own DNS (oster.com.ua)
+check host MyOster with address oster.com.ua
+    if failed icmp type echo count 200 with timeout 600 seconds then restart
+    if 50 restarts within 100 cycles then exec "/sbin/reboot"
+
+
+#--- Http server (Apache22)
+check process apache with pidfile /var/run/apache2/apache2.pid
+    start program = "/etc/init.d/apache2 start" 
+    stop program  = "/etc/init.d/apache2 stop"
+    if cpu > 60% for 2 cycles then alert
+    if cpu > 80% for 5 cycles then restart
+    if totalmem > 400.0 MB for 5 cycles then restart
+    if children > 100 then restart
+    if failed host oster.com.ua port 80 protocol http and request "/index.php" then restart
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- DB (MySQL)
+check process mysql with pidfile /var/run/mysql/mysqld.pid
+    start program = "/etc/init.d/mysql start"
+    stop program  = "/etc/init.d/mysql stop"
+    #if failed unixsocket /tmp/mysql.sock then restart
+    if failed port 3306 protocol mysql then restart
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- Mail (postfix)
+#check process postfix with pidfile /var/spool/postfix/pid/master.pid
+#    start program = "/usr/local/etc/rc.d/postfix start"
+#    stop program  = "/usr/local/etc/rc.d/postfix stop"
+#    if cpu > 60% for 2 cycles then alert
+#    if cpu > 80% for 5 cycles then restart
+#    if totalmem > 200.0 MB for 5 cycles then restart
+#    if children > 250 then restart
+#    if 5 restarts within 10 cycles then timeout
+
+
+# FTP (pure-ftpd) 
+check process pure-ftpd with pidfile /var/run/pure-ftpd/pure-ftpd.pid
+    start program = "/etc/init.d/pure-ftpd start"
+    stop program  = "/etc/init.d/pure-ftpd stop"
+    if cpu > 60% for 2 cycles then alert
+    if cpu > 85% for 5 cycles then restart
+    if failed port 21 protocol ftp then restart
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- VPN (openvpn)
+#check process openvpn with pidfile /var/run/openvpn_server.pid
+#    start program = "/etc/init.d/openvpn start"
+#    stop program  = "/etc/init.d/openvpn stop"
+#    if cpu > 60% for 2 cycles then alert
+#    if cpu > 85% for 5 cycles then restart
+#    if 5 restarts within 10 cycles then timeout
+
+
+#--- MS file sharing (samba)
+check process smbd with pidfile /var/run/samba/smbd.pid
+    start program = "/etc/init.d/samba start"
+    stop program  = "/etc/init.d/samba stop"
+    if cpu > 60% for 2 cycles then alert
+    if cpu > 85% for 5 cycles then restart
+    if failed port 139 type TCP then restart
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- Proxy (squid)
+#    check process squid with pidfile /var/run/squid3.pid
+#    start program = "/usr/bin/service squid3 start"
+#    stop  program = "/usr/bin/service squid3 stop"
+#    if failed port 3128 then restart
+#    if 5 restarts within 10 cycles then timeout
+
+
+#--- dhcp server (isc-dhcp-server)
+    check process dhcpd with pidfile /var/run/dhcpd.pid
+    start program = "/etc/init.d/isc-dhcp-server start"
+    stop program  = "/etc/init.d/isc-dhcp-server stop"
+    if 5 restarts within 10 cycles then timeout
+
+
+#--- Torrent (transmission)
+#check process transmission with pidfile /var/run/transmission/daemon.pid
+#    start program = "/etc/init.d/transmission-daemon start"
+#    stop  program = "/etc/init.d/transmission-daemon stop"
+#    if cpu > 80% for 5 cycles then restart
+
+
+#--- Check world root DNS  (ping 8.8.8.8)
+#check host RootDNS with address 8.8.8.8
+#    start program = "dhclient eth2"
+#    stop program  = "dhclient -r eth2"
+#    if failed icmp type echo count 5 with timeout 60 seconds then restart
+#    #if 20 restarts within 30 cycles then exec "/sbin/reboot"
+
+    
+#--- Disk usage  
+check filesystem fs_root with path /
+    if space usage > 80% then alert
+    if space usage > 85% for 5 times within 15 cycles then alert
+
+check filesystem fs_data1 with path /mnt/data1
+    if space usage > 80% then alert
+
+check filesystem fs_data2 with path /mnt/data2
+    if space usage > 80% then alert

@@ -1,0 +1,40 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+auto lo
+    iface lo inet loopback
+
+
+# internal
+#auto p5p1
+    #iface p5p1 inet static
+    #address 192.168.2.2
+    #netmask 255.255.255.0
+
+
+auto p5p1
+    iface p5p1 inet manual
+
+
+# virtual machine
+auto br0
+iface br0 inet static
+    address 192.168.2.2
+    netmask 255.255.255.0
+    network 192.168.2.0
+    #broadcast 172.16.4.63
+    #gateway 172.16.4.1
+    bridge_ports p5p1
+    bridge_fd 9
+    bridge_hello 2
+    bridge_maxage 12
+    bridge_stp off
+
+
+# external 
+auto eth2
+    iface eth2 inet dhcp
+    hwaddress ether a0:f3:c1:01:3f:67
+    # gateway 192.168.5.2
+    # dns-nameservers 8.8.8.8 4.4.4.4
+    # post-up /usr/local/sbin/my-custom-script

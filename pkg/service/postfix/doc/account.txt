@@ -1,0 +1,7 @@
+Admin panel
+addr: https://www.google.com/a/cpanel/oster.com.ua
+user: VladVons
+passw: 19710819
+------------
+user:tr41@oster.com.ua
+passw:Oster2010

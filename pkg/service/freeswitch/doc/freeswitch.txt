@@ -1,0 +1,10 @@
+Nat
+http://voipnotes.ru/protocol-stun-p1/
+https://wiki.freeswitch.org/wiki/NAT_Traversal
+http://freeswitchforum.com/viewtopic.php?f=6&t=272&p=1183#p1183
+http://www.nch.com.au/kb/10042.html
+
+Re: [Freeswitch-users] NAT issues - Outbound Call drops after~30seconds
+2016-01-29 18:16:24.686673 [DEBUG] sofia.c:6760 Channel sofia/internal/2011@192.168.2.101 entering state [terminating][0]
+Reason: SIP;cause=408;text="ACK Timeout"
+What you have in your external profile on variables ext-rtp-ip end ext-sip-ip?

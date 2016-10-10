@@ -1,0 +1,23 @@
+Error:
+Got fatal error during xfer (Tar exited with error 512 () status)
+Solve:
+add tar option to /etc/backuppc/config.pl
+$Conf{TarClientCmd}='... --ignore-failed-read';
+
+
+AsBacupUser()
+{
+  # Run all followed below under 'backuppc' user on a server side
+  # su -s /bin/bash backuppc
+
+  ssh-keygen -t rsa
+
+  # scp cant copy into not existance subdir. So create it on client side
+  ssh -l root oster.com.ua "mkdir -p /root/.ssh"
+
+  # copy key
+  scp -r /var/lib/backuppc/.ssh/id_rsa.pub root@oster.com.ua:/root/.ssh/authorized_keys
+
+  # Now is able to execute commands on client side without a password
+  ssh -l root oster.com.ua "ls -a"
+}

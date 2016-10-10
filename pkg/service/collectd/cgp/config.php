@@ -1,0 +1,1 @@
+/var/www/app/cgp/conf/config.php

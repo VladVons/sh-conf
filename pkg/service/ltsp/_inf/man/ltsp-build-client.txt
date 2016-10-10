@@ -1,0 +1,194 @@
+LTSP-BUILD-CLIENT(8)                                                           System Administration Utilities                                                          LTSP-BUILD-CLIENT(8)
+
+
+
+NAME
+       ltsp-build-client - build an LTSP client system for use with the LTSP server
+
+DESCRIPTION
+       LTSP Build Client usage:
+
+              ltsp-build-client <options>
+
+OPTIONS
+   Regular options:
+       --dist set the distribution to be used for install, defaults to running distribution
+
+       --extra-help
+              display help for all available commandline options
+
+       --help display this help message
+
+       --mirror
+              set the mirror location
+
+       --version
+              output version information and exit
+
+   Advanced options:
+       --accept-unsigned-packages allow unsigned packages during install
+
+       --apt-keys
+              include the listed keys in the apt keyring
+
+       --arch set the target architecture
+
+       --backports-dist
+              distribution to pull backports from
+
+       --backports-mirror
+              add a backports mirror
+
+       --backports-packages
+              list of packages to install from the backports repositories
+
+       --base set the default base install directory
+
+       --chroot
+              set the name of the chroot
+
+       --components
+              set the components to be used in mirror
+
+       --config
+              load a user specific configuration file
+
+       --copy-package-cache
+              cache downloaded packages
+
+       --copy-package-lists
+              copy apt Packages files from server
+
+       --copy-sourceslist
+              use the servers sources.list instead of generating one
+
+       --create-ext2-image
+              create ext2 image for use with NBD
+
+       --create-fs-image
+              create image for use with NBD of the specified filesystem
+
+       --debconf-seeds
+              load debconf seeding in the chroot after install
+
+       --debootstrap-keyring
+              use the specified keyring for debootstrap gpg verification
+
+       --debug
+              enable debug support
+
+       --early-mirror
+              add a mirror, which takes priority over the default mirror
+
+       --early-packages
+              set the list of packages to install after base-install is completed
+
+       --eatmydata
+              use eatmydata to speed up build times, at risk of data not getting written to disk
+
+       --enable-popcon
+              enable popularity-contest in the chroot
+
+       --exclude
+              exclude packages from the initial chroot
+
+       --extra-mirror
+              add a mirror, with lower priority than the default mirror
+
+       --fat-client-desktop
+              run most or all applications locally
+
+       --http-proxy
+              use specified http proxy
+
+       --install-debs-dir
+              install to the chroot all the .deb files contained in the provided directory
+
+       --keep-packages
+              keep cache of downloaded package files
+
+       --kernel-packages
+              set the list of kernel packages to install
+
+       --kernel-variant
+              set the kernel variant to install
+
+       --kernel-version
+              set the kernel version to install
+
+       --kiosk
+              a simple webkiosk mode
+
+       --late-packages
+              list of packages to install as part of the final installation
+
+       --locale
+              set the default locale
+
+       --mount-package-cache
+              mount package cache dir from server
+
+       --mount-package-dir
+              mount a server directory as the chroot package cache dir
+
+       --no-guess-proxy
+              do not autodetect apt proxy configuration
+
+       --pin-dist
+              distribution to set up apt pinning
+
+       --pin-packages
+              list of packages to install from the pinned distribution
+
+       --prompt-rootpass
+              prompt to set the root password, defaults to disabled
+
+       --purge-chroot
+              purge existing LTSP chroot if present
+
+       --security-mirror
+              add a security mirror
+
+       --serial-console
+              enable serial console
+
+       --skip-upgrade
+              skip upgrade of installed packages
+
+       --squashfs-image
+              create squashfs image for use with NBD
+
+       --updates-mirror
+              set the update mirror location
+
+AVAILABILITY
+       Part of the ltsp package and the latest versions are available in source form from https://launchpad.net/products/ltsp.
+
+FILES
+       /etc/ltsp/<tool>.conf: Upon execution the tool will read a configuration file to override built-in defaults.
+
+       Values  are  NAME="VALUE"  pairs,  with  # representing commented lines. most commandline options have an equivalent. an example Debian based system with an alternate base location,
+       architecture, and distribution:
+
+        # set alternate default location for ltsp chroot (--base)
+        BASE="/srv/ltsp"
+        # build an amd64 chroot by default (--arch)
+        ARCH="amd64"
+        # build a Debian sid environment (--dist)
+        DIST="sid"
+
+       /etc/ltsp/ltsp-server.conf: Each LTSP server tool will read a generic configuration file. This file is typically used for setting BASE, TFTP_DIRS and TFTP_BOOT_DIR.  These  settings
+       are overwritten by those set in specific tool configs.
+
+AUTHOR
+       Autogenerated from the script source code with help2man. Distributed under the terms of the GNU General Public License version 2 or any later version.
+
+REPORTING BUGS
+       Report bugs to https://bugs.launchpad.net/ltsp.
+
+SEE ALSO
+       ltsp-update-sshkeys(8), ltsp-update-kernels(8)
+
+
+
+ltsp-build-client 5.5.4-4                                                                March 2015                                                                     LTSP-BUILD-CLIENT(8)

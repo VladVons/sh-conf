@@ -1,0 +1,2 @@
+Russian documentation
+https://www.zabbix.com/documentation/2.4/ru/manual

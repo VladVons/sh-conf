@@ -1,0 +1,33 @@
+This app Best viewed at 160x60 or more..]
++OK log level  [7]
+2016-03-03 23:47:47.167921 [DEBUG] switch_rtp.c:1352  [  zrtp cache]: 	Storing ZRTP cache to </var/lib/freeswitch/db/zrtp.dat>...
+2016-03-03 23:47:47.167921 [DEBUG] switch_rtp.c:1213 Saving ZRTP cache: OK
+2016-03-03 23:48:09.227925 [DEBUG] sofia_reg.c:2380 Changing expire time to 90 by request of proxy sip:sip.intertelecom.ua
+2016-03-03 23:49:01.507928 [NOTICE] switch_channel.c:1077 New Channel sofia/external/0352400505@sip.intertelecom.ua [f82ede24-0444-43ea-b4a3-b875532ba8f4]
+2016-03-03 23:49:01.507928 [DEBUG] switch_core_session.c:1062 Send signal sofia/external/0352400505@sip.intertelecom.ua [BREAK]
+2016-03-03 23:49:01.507928 [DEBUG] switch_core_session.c:1062 Send signal sofia/external/0352400505@sip.intertelecom.ua [BREAK]
+2016-03-03 23:49:01.507928 [DEBUG] switch_core_state_machine.c:472 (sofia/external/0352400505@sip.intertelecom.ua) Running State Change CS_NEW
+2016-03-03 23:49:01.507928 [DEBUG] sofia.c:8957 sofia/external/0352400505@sip.intertelecom.ua receiving invite from 195.128.182.62:5060 version: 1.4.26 -37 64bit
+2016-03-03 23:49:01.507928 [DEBUG] switch_core_state_machine.c:491 (sofia/external/0352400505@sip.intertelecom.ua) State NEW
+2016-03-03 23:49:01.507928 [DEBUG] switch_core_session.c:1062 Send signal sofia/external/0352400505@sip.intertelecom.ua [BREAK]
+2016-03-03 23:49:01.507928 [DEBUG] sofia.c:2065 detaching session f82ede24-0444-43ea-b4a3-b875532ba8f4
+2016-03-03 23:49:01.527983 [DEBUG] sofia.c:2173 Re-attaching to session f82ede24-0444-43ea-b4a3-b875532ba8f4
+2016-03-03 23:49:01.527983 [DEBUG] switch_core_session.c:1062 Send signal sofia/external/0352400505@sip.intertelecom.ua [BREAK]
+2016-03-03 23:49:01.527983 [DEBUG] switch_core_session.c:1062 Send signal sofia/external/0352400505@sip.intertelecom.ua [BREAK]
+2016-03-03 23:49:01.527983 [DEBUG] sofia.c:8957 sofia/external/0352400505@sip.intertelecom.ua receiving invite from 195.128.182.62:5060 version: 1.4.26 -37 64bit
+2016-03-03 23:49:01.527983 [WARNING] sofia_reg.c:2852 Can't find user [anonymous@sip.intertelecom.ua] from 195.128.182.62
+You must define a domain called 'sip.intertelecom.ua' in your directory and add a user with the id="anonymous" attribute
+and you must configure your device to use the proper domain in it's authentication credentials.
+2016-03-03 23:49:01.527983 [DEBUG] switch_core_session.c:1062 Send signal sofia/external/0352400505@sip.intertelecom.ua [BREAK]
+2016-03-03 23:49:01.527983 [NOTICE] sofia.c:2063 Hangup sofia/external/0352400505@sip.intertelecom.ua [CS_NEW] [CALL_REJECTED]
+2016-03-03 23:49:01.527983 [DEBUG] switch_channel.c:3244 Send signal sofia/external/0352400505@sip.intertelecom.ua [KILL]
+2016-03-0
+
+
+016-03-04 00:30:44.207982 [WARNING] sofia_reg.c:1758 SIP auth challenge (REGISTER) on sofia profile 'wan' for [2033@sip.oster.com.ua] from ip 5.58.6.232
+2016-03-04 00:30:44.227979 [WARNING] sofia_reg.c:2852 Can't find user [2033@192.168.2.100] from 5.58.6.232
+You must define a domain called '192.168.2.100' in your directory and add a user with the id="2033" attribute
+and you must configure your device to use the proper domain in it's authentication credentials.
+2016-03-04 00:30:44.227979 [WARNING] sofia_reg.c:1703 SIP auth failure (REGISTER) on sofia profile 'wan' for [2033@sip.oster.com.ua] from ip 5.58.6.232
+freeswitch@internal> 
+

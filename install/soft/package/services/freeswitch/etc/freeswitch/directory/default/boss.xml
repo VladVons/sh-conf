@@ -1,0 +1,28 @@
+<include>
+   <user id="2010">
+        <params>
+            <param name="password" value="oster2015"/>
+        </params>
+        <variables>
+            <variable name="user_context" value="boss"/>
+            <variable name="effective_caller_id_name" value="Володимир Вонс (Mobile)"/>
+            <variable name="callgroup" value="admin"/>
+
+            <variable name="toll_allow" value="domestic,international,local"/>
+            <variable name="accountcode" value="2010"/>
+            <variable name="effective_caller_id_number" value="2010"/>
+            <variable name="outbound_caller_id_name" value="$${outbound_caller_name}"/>
+            <variable name="outbound_caller_id_number" value="$${outbound_caller_id}"/>
+        </variables>
+    </user>
+    <user id="2011">
+	<params>
+	    <param name="password" value="oster2015"/>
+	</params>
+	<variables>
+	    <variable name="user_context" value="boss"/>
+	    <variable name="toll_allow" value="domestic,international,local"/>
+	    <variable name="effective_caller_id_name" value="Володимир Вонс (Notebook)"/>
+        </variables>
+    </user>
+</include>

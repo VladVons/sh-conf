@@ -1,0 +1,11 @@
+//--- VladVons
+
+options {
+    masterfile-format text;
+    auth-nxdomain yes;
+    directory "/var/cache/bind";
+    version ":)";
+    listen-on-v6 {none;};
+    forwarders { 194.50.85.2; 194.50.85.1; };
+    dnssec-validation auto;
+};
