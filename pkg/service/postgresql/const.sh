@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ource $DIR_ADMIN/conf/script/const.sh
+source $DIR_ADMIN/conf/script/const.sh
 
 cApp="postgresql"
 cPkgName="$cApp $cApp-contrib $cApp-client"

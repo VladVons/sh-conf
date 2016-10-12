@@ -2,10 +2,7 @@
 #--- VladVons@gmail.com
 # https://wiki.mikejung.biz/Sysbench
 
-
 source $DIR_ADMIN/conf/script/system.sh
-
-
 
 
 cpu()

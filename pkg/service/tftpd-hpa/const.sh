@@ -1,11 +1,15 @@
 #!/bin/bash
 
-source $DIR_ADMIN/conf/script/const.sh
-source /etc/default/tftpd-hpa
-
 #http://wiki.linuxquestions.org/wiki/Diskless_Workstation
 
+source $DIR_ADMIN/conf/script/const.sh
+
 cApp="tftpd-hpa"
+
+DefFile="/etc/default/$cApp"
+if [ -r $DefFile ]; then
+  source $DefFile
+fi
 
 cPkgName="$cApp"
 cPkgAlso="isc-dhcp-server inetutils-inetd syslinux pxelinux initramfs-tools nfs-kernel-server tftp"
@@ -25,3 +29,4 @@ cDirPxeLinux="/usr/lib/PXELINUX"
 
 cDirIso="_inf/iso"
 cDirMnt="/mnt/iso"
+

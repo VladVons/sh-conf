@@ -5,7 +5,7 @@ source ./const.sh
 source $DIR_ADMIN/conf/script/service.sh
 
 
-InstallGUI()
+InstallEx()
 # ------------------------
 {
   Log "$0->$FUNCNAME"
@@ -18,38 +18,9 @@ InstallGUI()
   apachectl graceful
 }
 
-
-InstallEx()
-# ------------------------
-{
-  Log "$0->$FUNCNAME"
-
-  PkgInstall "$cPkgName"
-  #InstallGUI
-
-  # smartmon
-  #https://gist.github.com/jinnko/6366979
-}
-
-
-Clear()
-# ------------------------
-{
-  Log "$0->$FUNCNAME"
-  
-  cService $cApp stop 
-  sleep 1
-  rm -R /var/lib/collectd/rrd/*
-  cService $cApp start
-}
-
-
 # ------------------------
 clear
 case $1 in
-    Exec|e)	Exec		$2 ;;
-    Init)	$1		$2 ;;
     Install)	InstallEx	$2 ;;
-    Clear)	$1		$2 ;;
     *)		Test ;;
 esac

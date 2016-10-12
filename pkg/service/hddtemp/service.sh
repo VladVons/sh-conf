@@ -8,6 +8,7 @@ source $DIR_ADMIN/conf/script/service.sh
 # ------------------------
 clear
 case $1 in
-    Install)	$1 $2 $3 $4 ;;
+    Exec|e)	Exec	$2 ;;
+    Install)	$1 $2 ;;
     *)		Test ;;
 esac
