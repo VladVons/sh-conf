@@ -1,3 +1,5 @@
+OpenVZ templates
+http://mirror.yandex.ru/mirrors/download.openvz.org/template/precreated/
 
 http://releases.ubuntu.com/14.04.3/ubuntu-14.04.3-server-amd64.iso
 
