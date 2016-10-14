@@ -41,4 +41,3 @@ case $1 in
     Init)    	$1      $2 ;;
     *)          TestEx	;;
 esac
-G9

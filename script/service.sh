@@ -38,6 +38,7 @@ Test()
   if [ -n "$cProcess" ]; then
     #echo
     MultiCall ProcInMem "$cProcess"
+    systemctl status -l $cProcess
   fi;
 
   #if [ -n "$cService" ]; then 

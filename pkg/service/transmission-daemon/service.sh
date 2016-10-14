@@ -26,6 +26,20 @@ Init()
   ExecM "mkdir -p $cDirRoot/downloads-part"
   ExecM "chown -R $cUser:$cUser $cDirRoot/ "
 
+  # Set password:
+  # /etc/default/transmission-daemon doesnt work in DEB
+  #.
+  # service transmission stop
+  # edit file /etc/transmission-daemon/settings.json and set:
+  # "rpc-password : "MyPassword"
+  # "rpc-authentication-required": false
+  # service transmission start
+.
+  # error: Failed to set receive buffer
+  #echo 'net.core.rmem_max = 16777216' >> /etc/sysctl.conf
+  #echo 'net.core.wmem_max = 4194304' >> /etc/sysctl.conf
+  #sysctl -p
+
   # transmission web interface
   # http://localhost:9091
 }
