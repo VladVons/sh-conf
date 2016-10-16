@@ -26,6 +26,7 @@ samba
 #--- HDD services
 smartmontools
 hddtemp
+hdparm
 
 #--- mouse
 gpm

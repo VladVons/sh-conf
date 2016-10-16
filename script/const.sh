@@ -5,7 +5,7 @@
 #---
 
 # Version
-gVerInfo="1.12, 2015-05-21, VladVons@gmail.com"
+gVerInfo="1.14, 2016-10-14, VladVons@gmail.com"
 
 
 # Root
