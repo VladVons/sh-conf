@@ -48,7 +48,7 @@ Test()
 
   if [ -n "$cPort" ]; then
     MultiCall SockPort "$cPort"
-    ExecM "netstat -lnp | grep --color=auto $cProcess"
+    ExecM "netstat -lnp | egrep --color=auto $cProcess"
   fi;
 
   ShowLog $cLog1

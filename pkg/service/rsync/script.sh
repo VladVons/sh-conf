@@ -58,7 +58,7 @@ Sync_ConfImport()
   SrcDir=$gDirConf
 
   # copy from DstHost to localhost
-  # mkdir /admin/conf && rsync --dry-run --update --verbose --progress --recursive --links --times tr24.oster.com.ua::AdminFull /admin/conf
+  # mkdir -p /admin/conf && rsync --update --progress --recursive --links --times tr24.oster.com.ua::AdminFull /admin/conf
   Cmd="--update --verbose --progress --recursive --links --times ${DstHost}::AdminFull $SrcDir"
   Simulate "$Cmd"
 }

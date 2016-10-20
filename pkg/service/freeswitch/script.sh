@@ -93,14 +93,14 @@ Status()
 {
   ExecM "fs_cli -x 'sofia status'"
   ExecM "fs_cli -x 'show registrations'"
-  ExecM "fs_cli -x 'show calls'"
-  ExecM "fs_cli -x 'show codec'"
-  ExecM "fs_cli -x 'show modules'"
+  #ExecM "fs_cli -x 'show calls'"
+  #ExecM "fs_cli -x 'show codec'"
+  #ExecM "fs_cli -x 'show modules'"
   #ExecM "fs_cli -x 'sofia status profile internal'"
   #ExecM "fs_cli -x 'sofia status profile external'"
-  ExecM "fs_cli -x 'sofia status profile lan' | grep WS-BIND-URL"
+  #ExecM "fs_cli -x 'sofia status profile lan' | grep WS-BIND-URL"
 
-  ExecM "ls -1 $DirMod | sort"
+  #ExecM "ls -1 $DirMod | sort"
 }
 
 
@@ -110,6 +110,16 @@ ModList()
 }
 
 
+Reload()
+{
+  Log "$0->$FUNCNAME"
+
+  ExecM "fs_cli -x 'reloadxml'"
+  ExecM "fs_cli -x 'reload mod_sofia'"
+
+  Status
+}
+
 # ------------------------
 case $1 in
     Clear)		$1	$2 ;;
@@ -118,5 +128,6 @@ case $1 in
     Filter_From)	$1	$2 ;;
     Filter_Ratio)	$1	$2 ;;
     ListUsers)		$1	$2 ;;
+    Reload)		$1	$2 ;;
     Status)		$1	$2 ;;
 esac

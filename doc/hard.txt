@@ -85,6 +85,9 @@ lvs
 mkdir -p /mnt/hdd/data2
 mount /dev/us64-oster-vg/home /mnt/hdd/data2
 
+vgdisplay
+vgrename -v LGE8xa-m4Q8-zFRc-U1df-X2Me-t37c-XIcRbt pve1
+
 
 Brightness control 
 ------------------------------------------------------------------------

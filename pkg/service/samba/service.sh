@@ -12,9 +12,9 @@ TestEx()
 
   echo
   NetStat "samba|smbd|nmbd|winbind"
+  ExecM "pdbedit -L -v | grep Unix"
+  ExecM "smbstatus"
 
-  # ExecM "smbstatus"
-  # ExecM "pdbedit -L -v"
   # ExecM "testparm"
   # ExecM "wbinfo -u" 
 

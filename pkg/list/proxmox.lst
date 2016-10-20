@@ -14,7 +14,7 @@ iotop
 
 #--- ups
 apcupsd
-apcupsd-cgi
+#apcupsd-cgi
 #nut
 
 #--- services
@@ -35,3 +35,4 @@ gpm
 dnsutils
 lynx
 git
+pppoeconf
