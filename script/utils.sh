@@ -404,7 +404,7 @@ PkgListInst()
       echo "skip $Pkg"
     else
       echo
-      echo "install $pkg"
+      echo "install --== $Pkg ==---"
       apt-get install $Pkg --yes --no-install-recommends
     fi
   done
@@ -415,23 +415,21 @@ PkgInstalled()
 {
   Log "$0->$FUNCNAME"
 
-  DpkgFast="/tmp/soft.sh.dpkg"
-  dpkg -l | grep "^ii" | awk '{ print $2, $3 }' | sort > $DpkgFast
+  declare -a PkgInst=$(dpkg -l | grep "^ii" | awk '{ print $2 }' | sort | xargs)
 
+  echo "$gDirPkg"
   find $gDirPkg -type f -name const.sh | sort | \
   while read File; do
     cPkgName=""
+    cProcess="---"
     source $File
 
     if [ "$cPkgName" ]; then
-      Found=$(cat $DpkgFast | grep -w -m 1 "$cPkgName")
-      if [ "$Found" ]; then
-        echo "$Found in $File"
+      if [[ " ${PkgInst[@]} " =~ " ${cPkgName} " ]]; then
+        printf "%-20s %-15s %s\n" $cPkgName $cProcess $File
       fi
     fi
   done
-
-  rm $DpkgFast
 }
 
 

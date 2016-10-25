@@ -1,0 +1,19 @@
+OpenVPN in lxc container:
+https://blog.felixbrucker.com/2015/10/01/how-to-enable-tuntap-inside-lxc/
+
+on PVE host:
+/etc/lxc/default.conf or /etc/pve/lxc/<ID>.conf
+  lxc.cgroup.devices.allow = c 10:200 rwm
+
+
+on lxc host:
+/etc/rc.local
+  if ! [ -c /dev/net/tun ]; then
+    mkdir -p /dev/net
+    mknod -m 666 /dev/net/tun c 10 200
+    #chmod 666 /dev/net/tun
+  fi
+
+
+check openvpn service running with 'monit'
+

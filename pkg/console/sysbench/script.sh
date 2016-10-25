@@ -5,13 +5,13 @@
 source $DIR_ADMIN/conf/script/system.sh
 
 
-cpu()
+CPU()
 {
   sysbench --test=cpu --cpu-max-prime=20000 run
 }
 
 
-fileio()
+FileIO()
 {
   Size="16G"
 
@@ -21,33 +21,38 @@ fileio()
 }
 
 
-mem()
+Mem()
 {
   sysbench --test=memory --num-threads=4 run
 }
 
 
-mysql()
+RunMySQL()
 {
   db="app_test"
   gAuth="--user=$gMySQLUser --password=$gMySQLPassw"
+
   SQL="CREATE DATABASE IF NOT EXISTS $db"
+  ExecM "mysql $gAuth --disable-column-names --batch --execute='$SQL'"
 
-  mysql $gAuth --disable-column-names --batch --execute="$SQL"
-  sysbench --test=oltp --oltp-table-size=100000 --mysql-db=$db --mysql-user=$gMySQLUser --mysql-password=$gMySQLPassw prepare
-
-  sysbench --test=oltp --mysql-db=$db --mysql-user=$gMySQLUser --mysql-password==$gMySQLPassw cleanup
+  ExecM "sysbench --test=oltp --oltp-table-size=1000000 --mysql-db=$db --mysql-user=$gMySQLUser --mysql-password=$gMySQLPassw prepare"
+  #ExecM "sysbench --test=oltp --mysql-db=$db --mysql-user=$gMySQLUser --mysql-password=$gMySQLPassw --max-time=10 --oltp-read-only=on --max-requests=0 --num-threads=2 run"
+  ExecM "sysbench --test=oltp --mysql-db=$db --mysql-user=$gMySQLUser --mysql-password=$gMySQLPassw cleanup"
 }
 
+MySQL()
+{
+  time RunMySQL
+}
 
 clear
 sysbench --version
 
 # ------------------------
 case $1 in
-    cpu)    $1 $2 ;;
-    fileio) $1 $2 ;;
-    mem)    $1 $2 ;;
-    mysql)  $1 $2 ;;
+    CPU)    $1 $2 ;;
+    FileIO) $1 $2 ;;
+    Mem)    $1 $2 ;;
+    MySQL)  $1 $2 ;;
 esac
 

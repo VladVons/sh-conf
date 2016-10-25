@@ -17,22 +17,41 @@ apcupsd
 #apcupsd-cgi
 #nut
 
-#--- services
+#--- collectd 
 collectd
+hddtemp
+omping
+lm-sensors
+
+#--- services
 #fail2ban
 monit
-samba
 
 #--- HDD services
 smartmontools
 hddtemp
 hdparm
+parted
+ntfs-3g
+
+#--- ACPI
+acpid
 
 #--- mouse
 gpm
 
 #--- internet
+pppoeconf
 dnsutils
 lynx
-git
-pppoeconf
+#git
+rsync
+axel
+wput
+wget
+
+#--- misc
+screen
+hardinfo
+#mbmon
+#stress

@@ -10,6 +10,9 @@ source $DIR_ADMIN/conf/script/service.sh
 TestEx()
 {
   ExecM "ifconfig"
+  ExecM "brctl show" "check bridge"
+
+  ip addr show vmbr0
 }
 
 # ------------------------

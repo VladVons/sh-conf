@@ -29,6 +29,8 @@ GitToServ()
   GitSyncToServ
 }
 
+#mkdir -p /admin/conf && rsync --update --recursive --links tr24.oster.com.ua::AdminFull /admin/conf
+
 clear
 case $1 in
     GitToServ|t)    GitToServ   "$2" "$3" ;;

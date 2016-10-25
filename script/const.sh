@@ -69,9 +69,9 @@ CheckEnv()
   # include host constants and overwrite existance
   if [ -r $gFileHost ]; then
     source $gFileHost
-  else
-    echo "File not found $gFileHost"
-    exit 0;
+  #else
+    #echo "File not found $gFileHost"
+    #exit 0;
   fi;
 }
 

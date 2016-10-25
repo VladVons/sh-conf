@@ -34,10 +34,11 @@ qmCommands()
   aID=$1;
   Log "$0->$FUNCNAME, $aID"
 
+  #--- VM commands
+  #qm list
   #qm shutdown $aID
   #qm stop $aID
-
-  #qm list
+  qm unlock $aID
   #qm config $aID
 }
 
@@ -55,6 +56,22 @@ vmCreate()
     -ostype wxp \
     -name MyName \
     -description MyDescr
+}
+
+
+CT_Templates()
+{
+  #--- lxc images https://www.turnkeylinux.org
+
+  pveam update
+  pveam available
+
+  # only OS
+  pveam available --section system
+
+  # show downloaded on storage
+  pveam list data2
+
 }
 
 # ------------------------

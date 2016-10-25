@@ -1,0 +1,22 @@
+# <file system>	<mount point>	<type>	<options>	<dump>	<pass>
+
+# ext4 
+/dev/sda4	/mnt/hdd/data1	ext4	defaults	0 1
+
+# CDROM
+/dev/sr0	/mnt/cdrom	udf,iso9660,user,noauto	0 0
+
+# Samba sharing
+//192.168.2.1/temp	/mnt/smb/tr24	cifs	username=guest,password=guest,noauto,iocharset=utf8,sec=ntlm,uid=1000,rw  0  0
+
+# RAM temp
+tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=512M 0 0
+
+#/dev/sdc1      /mnt/usb2       ntfs-3g         defaults,noauto,locale=en_US.utf8   0    0
+
+#/dev/sda5      /mnt/ntfs       ntfs            defaults,uid=1000,rw  0  0
+
+#/dev/sdb4      /mnt/ufs        ufs             noauto,ro,ufstype=ufs2,nodev,nosuid 0 0
+
+# on clien side. Put login and password into /etc/davfs2/secrets
+#http://oster.com.ua/owncloud/remote.php/webdav /mnt/owncloud   davfs   user,noauto,rw  0 0
