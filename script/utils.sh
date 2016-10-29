@@ -281,6 +281,8 @@ DirSetOwnerPerm()
   find "$aDir" -type f -print0 | xargs -0 chmod 664
   find "$aDir" -type f -name "*.sh" -print0 | xargs -0 chmod 774	# warn
   find "$aDir" -type d -print0 | xargs -0 chmod 775
+
+  #chgrp -R $aOwner $aDir
 }
 
 

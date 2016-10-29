@@ -51,13 +51,16 @@ CheckEnv()
 
     File="/etc/environment"
     if [ -z $(grep "DIR_ADMIN" $File) ]; then
-      echo "DIR_ADMIN=/admin" >> $File
+      Var="DIR_ADMIN=/admin"
+      echo $Var >> $File
+      export $Var
 
       echo "Environment variable 'DIR_ADMIN' is undefined."
       echo "DIR_ADMIN=/admin added to $File. Need reboot"
       echo "press ENTER to force RSYNC or Ctrl-C to exit"
       read
 
+      exit
       mkdir -p $DIR_ADMIN/host
       touch $DIR_ADMIN/host/host.conf
       rsync --verbose --progress --recursive --compress --links --times --delete tr24.oster.com.ua::AdminFull /admin/conf

@@ -1,5 +1,5 @@
 #--- 
-# ProxMox debian VM server
+# XUbuntu desktop
 # VladVons@gmail.com
 #---
 
@@ -12,20 +12,11 @@ htop
 iftop
 iotop
 
-#--- ups
-apcupsd
-#apcupsd-cgi
-#nut
-
 #--- collectd 
 collectd
 hddtemp
 omping
 lm-sensors
-
-#--- services
-#fail2ban
-monit
 
 #--- HDD services
 smartmontools
@@ -33,6 +24,7 @@ hddtemp
 hdparm
 parted
 ntfs-3g
+gparted
 
 #--- ACPI
 acpid
@@ -44,7 +36,7 @@ gpm
 pppoeconf
 dnsutils
 lynx
-#git
+git
 rsync
 axel
 wput
@@ -53,6 +45,6 @@ wget
 #--- misc
 screen
 hardinfo
-#mbmon
-#stress
+mbmon
+stress
 zip

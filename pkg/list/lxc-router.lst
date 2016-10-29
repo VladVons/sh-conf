@@ -1,0 +1,36 @@
+#--- 
+# LXC container
+# VladVons@gmail.com
+#---
+
+
+#--- file manager
+mc
+
+
+#--- statictic
+htop
+iftop
+
+
+#--- services
+monit
+squid3
+
+
+#--- network
+iptables-persistent
+pppoeconf
+isc-dhcp-server
+nmap
+openvpn
+bind9
+fail2ban
+
+
+#--- internet
+dnsutils
+lynx
+rsync
+whois
+ssmtp
