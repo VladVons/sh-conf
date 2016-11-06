@@ -1,0 +1,10 @@
+mc
+apt-cacher-ng
+minidlna
+monit
+nfs-kernel-server
+pure-ftpd
+samba
+tftpd-hpa
+transmission-daemon 
+iscsitarget

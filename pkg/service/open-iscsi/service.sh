@@ -12,7 +12,8 @@ TestEx()
   iscsiadm -m discovery -t st -p 192.168.2.111
   iscsiadm -m node
 
-  iscsiadm -m node --targetname "iqn.2001-04.com.example:storage.lun1" --portal "192.168.2.111:3260" --login
+  #iscsiadm -m node --targetname "iqn.2001-04.com.example:storage.lun1" --portal "192.168.2.111:3260" --login
+  #/dev/sdb1       /mnt/scsi/data1        ext4    defaults,auto,_netdev 0 0
 }
 
 # ------------------------

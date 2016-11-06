@@ -19,63 +19,81 @@ AddNewPartition()
 }
 
 
+Swap()
+{
+  #--- create simple awap volume
+  free -m
+  swapon -s
+   
+  lvcreate -L 4G -n swap2 vgdata
+  mkswap /dev/vgdata/swap2
+  blkid /dev/vgdata/swap2
+  swapon xxx-xxxxx
+}
+
+
 LVM()
 {
   apt-get install lvm2
-
-  #--- mount 
   modprobe dm-mod
-  #lsblk
-  #lvs
-  #pvs
-
-  vgscan
-  vgchange -ay vgdata
-
   mkdir -p /mnt/hdd/data2
   mount /dev/vgdata/home /mnt/hdd/data2
 
-  #--- create volume group
+
+  #--------------- physical group  ---------------
+  #--- list
+  pvs
   pvscan
   pvdisplay
 
+
+  #--------------- volume group  ---------------
+  #--- volume group list
   lsblk
-  vgcreate vgdata /dev/sdaX
+  vgs
   vgdisplay
+  vgscan
 
-  #--- create logical volume 'thin'
-  pvesm lvmthinscan vgdata
-  lvcreate -L 10G -n vol1 vgdata
-  lvconvert --type thin-pool vgdata/vol1
-
+  #--- create volume group
+  vgcreate vgdata /dev/sdaX
 
   #--- volume group rename
   vgdisplay
   vgrename -v LGE8xa-m4Q8-zFRc-U1df-X2Me-t37c-XIcRbt vgdata2
+  vgchange -ay vgdata2
 
+  #--- group volume remove
+  vgremove vgdata
+  pvremove /dev/sdb1
+
+
+  #--------------- logical volume  ---------------
+  #--- logical volume list
+  lsblk
+  lvs vgdata
 
   #--- create simple volume
   lvcreate -L 10G -n vol2 vgdata
   mkfs -t ext4 /dev/vgdata/vol2
 
 
+  #--- create logical volume 'thin'
+  pvesm lvmthinscan vgdata
+  lvcreate -L 10G -n vol1 vgdata
+  lvconvert --type thin-pool vgdata/vol1
+
   #--- logical volume rename
   lvrename vgdata vol1 vol3
 
-
   #--- logical volume resize
-  lvresize --size +4G /dev/vgdata/vol1
+  e2fsck -ff /dev/vgdata/vol1
+  #lvreduce -L -4G /dev/vgdata/vol1
+  lvresize --size -4G /dev/vgdata/vol1
   resize2fs /dev/vgdata/vol1
-
 
   #--- logical volume remove
   umount /dev/vgdata/vol2
   lvremove /dev/vgdata/vol2
-
-
-  #--- group volume remove
-  vgremove vgdata
-  pvremove /dev/sdb1
 }
 
 

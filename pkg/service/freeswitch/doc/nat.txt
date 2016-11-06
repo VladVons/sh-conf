@@ -1,0 +1,7 @@
+autoload_configs/switch.conf.xml
+<!-- <param name="rtp-start-port" value="16384"/> -->
+<!-- <param name="rtp-end-port" value="16484"/> -->
+
+Asterisk firewall rules - voip-info.org
+http://notessysadmin.com/sip-za-nat-asterisk-i-iptables
+http://forum.ubuntu.ru/index.php?topic=257012.0

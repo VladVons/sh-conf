@@ -23,17 +23,17 @@ monit
 
 
 #--- mouse
-gpm
+#gpm
 
 
 #--- network
-iptables-persistent
-pppoeconf
-isc-dhcp-server
-nmap
-openvpn
-bind9
-fail2ban
+#iptables-persistent
+#pppoeconf
+#isc-dhcp-server
+#nmap
+#openvpn
+#bind9
+#fail2ban
 
 
 #--- internet
@@ -48,10 +48,10 @@ ssmtp
 
 
 #--- file sharing
-samba
-pure-ftpd
-nfs-kernel-server
-tftpd-hpa
+#samba
+#pure-ftpd
+#nfs-kernel-server
+#tftpd-hpa
 
 
 #--- misc

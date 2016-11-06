@@ -1,13 +1,13 @@
 #!/bin/bash
 
 
-Init()
+Sync()
 {
   apt-get update
   apt-get install --yes --no-install-recommends mc rsync
 
   mkdir -p /admin/conf
-  rsync --update --recursive --links tr24.oster.com.ua::AdminFull /admin/conf
+  rsync --recursive --links --times --update --delete tr24.oster.com.ua::AdminFull /admin/conf
 
   File="/etc/environment"
   if [ -z $(grep "DIR_ADMIN" $File) ]; then
@@ -18,12 +18,36 @@ Init()
 }
 
 
-Inst()
+Install()
 {
   source ./script/utils.sh
-  PkgListInst lxc-router.lst
+
+  #File="fileserver.lst"
+  #File="proxmox.lst"
+  #File="router.lst"
+  #File="xubuntu.lst"
+
+  PkgListInst $File
 }
 
-#Init
-Inst
 
+Installed()
+{
+  source ./script/utils.sh
+  PkgInstalled
+}
+
+
+Mount()
+{
+  Dir="/mnt/smb/tr24"
+
+  mkdir -p $Dir
+  mount -t cifs //192.168.2.1/temp $Dir -o user=guest -o password=guest
+}
+
+
+Sync
+#Install
+#Installed
+#Mount
