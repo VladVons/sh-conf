@@ -23,10 +23,10 @@ cService="$gDirD/$cApp"
 cPort="69"
 cLog1="$gFileSysLog"
 
-cDirTftp="/srv/tftp"
 cDirSysLinux="/usr/lib/syslinux"
 cDirPxeLinux="/usr/lib/PXELINUX"
 
 cDirIso="_inf/iso"
 cDirMnt="/mnt/iso"
+cDirTftp="/mnt/hdd/data1/share/public/image/tftp"
 

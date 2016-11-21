@@ -16,3 +16,4 @@ cLog_freeswitch="/var/log/freeswitch/freeswitch.log"
 cLog_ssh="/var/log/auth.log"
 
 cMan="jail.conf"
+cBlackList="/etc/fail2ban/ip.blacklist"

@@ -11,13 +11,14 @@ Clear()
 
   service $cProcess stop
 
-  cd $DIR_ADMIN/conf/pkg/service/iptables-persistent
+  cd $DIR_ADMIN/conf/pkg/console/iptables-persistent
   ./script.sh RulesClear
   ./script.sh RulesExecute
 
-  echo > $cLog_freeswitch
-  echo > $cLog_fail2ban
-  echo > $cLog_ssh
+  ExecM "echo > $cLog_freeswitch"
+  ExecM "echo > $cLog_fail2ban"
+  ExecM "echo > $cLog_ssh"
+  ExecM "echo > $cBlackList"
 
   service $cProcess start
 }
@@ -50,7 +51,7 @@ SaveBanIP()
 {
   Log "$0->$FUNCNAME"
 
-  File="/etc/fail2ban/ip.blacklist"
+  File=$cBlackList
 
   #(grep " Ban " $cLog1 && \
     #iptables -S | grep -E "REJECT|DROP") | \

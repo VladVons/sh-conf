@@ -23,6 +23,7 @@ iso_pmagic()
   ExecM "rm -R pm2pxe"
 
   ExecM "cp $cDirMnt/pmagic/{bzImage,fu.img,initrd.img,m32.img} $DirTftpDst"
+  ExecM "umount $cDirMnt"
 }
 
 

@@ -19,9 +19,20 @@ AddNewPartition()
 }
 
 
-Swap()
+SwapFile()
 {
-  #--- create simple awap volume
+  swapon -s
+
+  fallocate -l 2G /swapfile
+  chmod 600 /swapfile
+  mkswap /swapfile
+  swapon /swapfile
+}
+
+
+SwapPart()
+{
+  #--- create simple swap volume
   free -m
   swapon -s
    

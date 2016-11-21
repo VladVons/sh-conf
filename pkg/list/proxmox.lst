@@ -55,4 +55,9 @@ screen
 hardinfo
 #mbmon
 #stress
+
+#--- archiver
 zip
+unzip
+rar
+unrar

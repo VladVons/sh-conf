@@ -541,6 +541,30 @@ NetGetHostPorts()
 }
 
 
+NetSpeed1()
+{
+  File="speedtest_cli.py"
+
+  if [ ! -r $File ]; then
+    wget --no-check-certificate https://raw.github.com/sivel/speedtest-cli/master/$File
+    chmod +x $File
+  fi
+
+  ./$File
+}
+
+
+NetSpeed2()
+{
+
+  #http://o3.ua/support/speed_test/
+  Url="ftp://176.37.214.174/pub/video/doc/Ot_Chernobilya_Do_Focusimy_SATRip.avi"
+
+  apt-get install axel
+  axel -o /tmp/speedtest.dat $Url
+}
+
+
 LogClear()
 {
   Log "$0->$FUNCNAME"
@@ -666,6 +690,8 @@ case $1 in
     NetGetExtIP)       $1 $2 $3 $4;;
     NetGetHosts)       $1 $2 $3 $4;;
     NetGetHostPorts)   $1 $2 $3 $4;;
+    NetSpeed1)         $1 $2 $3 $4;;
+    NetSpeed2)         $1 $2 $3 $4;;
     PasswGenerator)    $1 $2 $3 $4;;
     PkgInstalled)      $1 $2 $3 $4;;
     PkgListInst)       $1 $2 $3 $4;;
