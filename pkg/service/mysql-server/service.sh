@@ -37,7 +37,8 @@ Init()
 {
   Log "$0->$FUNCNAME"
 
-  mysqladmin -u $gMySQLUser password $gMySQLPassw
+  #mysqladmin -u $gMySQLUser password $gMySQLPassw
+  dpkg-reconfigure mysql-server-5.6
   Exec
 }
 
