@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 GitSyncToServ()
 # sync only changes from disk to server.
 {
