@@ -110,6 +110,7 @@ vnc4server
 wget
 whois
 wine
+winetricks
 winff
 wput
 xfce4-goodies
