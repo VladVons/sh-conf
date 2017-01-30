@@ -2,15 +2,15 @@
 #--- VladVons@gmail.com
 
 source ./const.sh
-source $DIR_ADMIN/conf/script/Service.sh
+source $DIR_ADMIN/conf/script/service.sh
 
 
 TestEx()
 {
- Test
+  Test
 
- ExecM "ps -e | grep Xorg --color=auto" "Check if Xserver is running"
- ExecM "pidof X && echo 'X server is running'"
+  ExecM "ps -e | grep Xorg --color=auto" "Check if Xserver is running"
+  ExecM "pidof X && echo 'X server is running'"
 }
 
 

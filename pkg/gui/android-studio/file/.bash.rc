@@ -1,0 +1,4 @@
+#export PATH=${PATH}:~/Android/Sdk/tools
+#export PATH=${PATH}:~/Android/Sdk/platform-tools
+export PATH=${PATH}:/home/linux/Android/Sdk/tools
+export PATH=${PATH}:/home/linux/Android/Sdk/platform-tools
