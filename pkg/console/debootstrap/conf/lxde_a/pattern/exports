@@ -1,4 +1,4 @@
 #--- http://linux-ubuntu.info
-# src: /etc/exports
+# src: NFS server /etc/exports
 
 cDirRoot       *(rw,no_root_squash,async,no_subtree_check)

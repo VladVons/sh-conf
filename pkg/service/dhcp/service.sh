@@ -22,10 +22,12 @@ ExecEx()
   aAction=${1:-"restart"}
   Log "$0->$FUNCNAME, $cApp, $aAction"
 
-  dhclient -r $gExtIf
+  #dhclient -r $gExtIf
+  dhclient -x
   sleep 1
 
-  dhclient $gExtIf
+  #dhclient $gExtIf
+  dhclient
   sleep 1
 
   TestEx

@@ -35,12 +35,12 @@ rdesktop
 #--- Internet browser
 firefox
 firefox-locale-uk
+chromium-browser
 
-#chromium-browser
 #pidgin
 
-#flashplugin-installer
-#icedtea-plugin
+flashplugin-installer
+icedtea-plugin
 
 
 #--- Office 
@@ -54,26 +54,27 @@ firefox-locale-uk
 #xsane
 
 
-#--- education
+#--- Education
 #goldendict
 #bibletime
 #audacity
 
 
-#--- archiver
+#--- Erchiver
 p7zip-full
 zip
 unzip
 
 
 #--- File manager
+mc
 doublecmd-gtk
 
 
 #--- Media
-#vlc
+vlc
 #kodi
-#audacious
+audacious
 #radiotray
 #winff
 
@@ -97,11 +98,14 @@ doublecmd-gtk
 
 #--- Tools
 hardinfo
-conky
-unetbootin
+#conky
+#unetbootin
 gparted
-zenmap
+#zenmap
+boot-repair
 
+gsmartcontrol
+dialog
 
 #--- System
 pkg-config

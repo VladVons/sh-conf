@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+# VladVons
+# force DNS
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+exit 0

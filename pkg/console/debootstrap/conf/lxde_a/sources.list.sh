@@ -4,7 +4,7 @@
 AddDeb()
 {
   aPkg="$1"; aStr="$2";
-  echo $aStr > /etc/apt/sources.list.d/$aPkg.list
+  echo $aStr >> /etc/apt/sources.list.d/$aPkg.list
 }
 
 

@@ -54,6 +54,8 @@ RulesTest()
   sleep 1
   RulesExecute
 
+  iptables -L -nv
+
   echo "Computer will be rebooted in $WaitTime minutes ..."
   shutdown -r +${WaitTime} "Ctrl-C to abort. Than you can save settings with './service.sh RulesSave'"
 }

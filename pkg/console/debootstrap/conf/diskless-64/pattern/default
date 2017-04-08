@@ -1,7 +1,0 @@
-#--- http://linux-ubuntu.info
-# src: /srv/tftp/pxelinux.cfg/default
-
-Label Diskless station
-  MENU LABEL Diskless cDistr cArch
-  kernel /image/cConf/vmlinuz
-  append initrd=/image/cConf/initrd.img root=/dev/nfs nfsroot=cNfsServerIP:cDirRoot ip=dhcp rw

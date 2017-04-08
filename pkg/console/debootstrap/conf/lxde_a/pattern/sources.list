@@ -1,0 +1,11 @@
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr main restricted
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr-updates main restricted
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr universe
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr-updates universe
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr multiverse
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr-updates multiverse
+deb http://ua.archive.ubuntu.com/ubuntu/ cDistr-backports main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu cDistr partner
+deb http://security.ubuntu.com/ubuntu cDistr-security main restricted
+deb http://security.ubuntu.com/ubuntu cDistr-security universe
+deb http://security.ubuntu.com/ubuntu cDistr-security multiverse

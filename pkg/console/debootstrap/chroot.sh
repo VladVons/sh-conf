@@ -261,12 +261,18 @@ Defaults()
 }
 
 
-All()
+Pkg()
 {
-  Start
   PkgPpaAdd
   PkgUpdate
   PkgInst
+}
+
+
+All()
+{
+  Start
+  Pkg
   Finish
 }
 

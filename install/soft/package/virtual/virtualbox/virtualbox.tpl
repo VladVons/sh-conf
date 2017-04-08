@@ -10,7 +10,9 @@ cAptList="/etc/apt/sources.list.d/$cPkgName.list"
 
 ScriptBeforeInstall()
 {
-  ExecM "wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | apt-key add -"
+  #ExecM "wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O - | apt-key add -"
+  ExecM "wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -"
+
   ExecM "echo deb http://download.virtualbox.org/virtualbox/debian trusty contrib > $cAptList"
 
   # allow user catch USB devices in guest system

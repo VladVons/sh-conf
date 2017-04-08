@@ -1,5 +1,5 @@
 # Double commander
-#ppa:alexx2000/doublecmd
+ppa:alexx2000/doublecmd
 
 # XnView
 #ppa:dhor/myway
@@ -15,3 +15,6 @@
 
 # ffmpeg codec
 #ppa:mc3man/trusty-media
+
+# boot-repair
+ppa:yannubuntu/boot-repair

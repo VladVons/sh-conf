@@ -513,10 +513,12 @@ NetGetExtIP()
 {
   #Log "$0->$FUNCNAME"
 
-  wget -qO - ipecho.net/plain
+  wget -qO - ipinfo.io/ip
+  #wget -qO- icanhazip.com
+  #wget -qO - ipecho.net/plain
   #wget -qO - ip.appspot.com
-
   #wget -qO - v4.ipv6-test.com/api/myip.php
+
   #curl -s "http://v4.ipv6-test.com/api/myip.php"
 }
 
@@ -621,6 +623,8 @@ FatCheckDisk()
 
 UsbFormat()
 {
+  Log "$0->$FUNCNAME"
+
   for dev in $(UsbList); do
     Size=$(blockdev --getsz $dev)
     if YesNo "format $dev $(expr $Size / 1000))Kb"; then
@@ -665,12 +669,24 @@ DiskClean()
 }
 
 
-#SymLinkBackup
+GrubRepair()
+{
+  ExecM "fdisk -l | egrep '/sd[a-z]' | egrep -iv 'swap|fat|ntfs'"
+
+  DevBoot="sdx2"
+  Dev=${DevBoot:0:3}
+  mount -t ext4 /dev/$Dev /mnt/$Dev
+  grub-install --recheck --root-directory=/mnt/$Dev /dev/$Dev
+}
+
+
+clear
 case $1 in
     ArchUnpack)        $1 $2 $3 $4;;
     ConfBackup|cb)     ConfBackup ;;
     ConfUpdate|cu)     ConfUpdate ;;
-    CpuStress)	       $1 $2 $3 $4;;
+    CpuStress)         $1 $2 $3 $4;;
+    GrubRepair)        $1 $2 $3 $4;;
     FindFuncLib)       $1 $2 $3 $4;;
     DirClearMask)      $1 $2 $3 $4;; 
     DirSize)           $1 $2 $3 $4;; 

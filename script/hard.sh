@@ -123,10 +123,15 @@ GetNewDevices()
 # get list of new attached devices
 # ------------------------
 {
-  ExecM "ls /dev/ > /tmp/dev_list_1.txt" "Dump current devices list"
+  File1="/tmp/devs_1.txt"
+  File2="/tmp/devs_2.txt"
+
+  ExecM "ls /dev/ > $File1" "Dump current devices list"
   Wait "now plug in new device"
-  ExecM "ls /dev/ > /tmp/dev_list_2.txt" "Dump updated devices list"
-  ExecM "diff --suppress-common-lines -y  /tmp/dev_list_1.txt /tmp/dev_list_2.txt" "Compare two files"
+  ExecM "ls /dev/ > $File2" "Dump updated devices list"
+  ExecM "diff --suppress-common-lines -y  $File1 $File2" "Compare two files"
+
+  rm $File1 $File2
 }
 
 
