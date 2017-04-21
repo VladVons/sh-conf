@@ -8,8 +8,17 @@ source $DIR_ADMIN/conf/script/service.sh
 
 #https://www.digitalocean.com/community/tutorials/how-to-use-backuppc-to-create-a-backup-server-on-an-ubuntu-12-04-vps
 
+TestEx()
+{
+  Log "$0->$FUNCNAME"
 
-init()
+  Test
+
+  eval echo "~$User"
+}
+
+
+Init()
 # ------------------------
 {
   Log "$0->$FUNCNAME"
@@ -39,6 +48,7 @@ KeyToClient()
 
   # ??? . see ./doc/HowTo.txt
   #su -s /bin/bash backuppc
+ 
   #su -c "ssh -l root $ClientHost 'mkdir -p /root/.ssh'"
   #su -c "./script.sh AsBackupUser $ClientHost" -s /bin/sh $User
 }
@@ -48,17 +58,20 @@ InstallEx()
 {
   Install
 
+  #check if installed
+  perl -e 'use Zlib;'
+
   # perl compression module
   cpan Compress::Zlib
+  cpan File::RsyncP
 }
 
 
 # ------------------------
 clear
 case $1 in
-    Exece)    		$1 $2	;;
     Install)		InstallEx	$2 ;;
     Init)		$1 $2	;;
     KeyToClient)	$1 $2	;;
-    *)			Test	;;
+    *)			TestEx	;;
 esac
