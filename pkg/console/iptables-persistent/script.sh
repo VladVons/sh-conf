@@ -97,6 +97,7 @@ RulesCommitReboot()
 Test()
 {
   echo "Hello"
+  InitNetVar
 }
 
 

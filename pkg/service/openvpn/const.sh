@@ -11,7 +11,7 @@ cProcess="$cApp"
 cService="$gDirD/$cApp"
 cPort="1194"
 
-Instance="oster-serv"
+Instance="oster-server1"
 cLog2="/var/log/${cApp}_${Instance}.log"
 cLog1="/var/log/${cApp}_${Instance}-status.log"
 
