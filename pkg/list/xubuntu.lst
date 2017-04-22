@@ -115,6 +115,9 @@ winetricks
 winff
 wput
 xfce4-goodies
+network-manager-openvpn
+network-manager-openvpn-gnome
+xfce4-power-manager-plugins
 xfwm4-themes
 xnview
 xpdf

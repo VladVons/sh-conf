@@ -37,10 +37,10 @@ Reserved()
   seq 1 4 253 | xargs
 
   echo
-  grep --dereference-recursive "ifconfig" "etc/openvpn/server/ccd" | awk '{print $3,$2,$1}' | sort -V
+  grep --dereference-recursive "ifconfig" "etc/openvpn/server1/ccd" | awk '{print $3,$2,$1}' | sort -V
 
   echo
-  grep --dereference-recursive "iroute" "etc/openvpn/server/ccd" | awk '{print $2,$1}' | sort -V
+  grep --dereference-recursive "iroute" "etc/openvpn/server1/ccd" | awk '{print $2,$1}' | sort -V
 }
 
 
