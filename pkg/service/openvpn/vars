@@ -1,0 +1,23 @@
+# run 'sh' and execute '. ./vars' 
+
+export D=$DirKey
+export KEY_CONFIG=$D/openssl.cnf
+export KEY_DIR=$D/$Company
+export KEY_SIZE=1024
+
+export KEY_COUNTRY="UA"
+export KEY_PROVINCE="TE"
+export KEY_CITY="Ternopil"
+export KEY_ORG="oster.com.ua"
+export KEY_EMAIL="VladVons@gmail.com"
+export KEY_OU=$Company
+export KEY_NAME="${KEY_OU}_EasyRSA"
+
+echo "Key path: $KEY_DIR"
+echo "usage steps:"
+echo "./clean-all - index.txt, serial"
+echo "./build-ca  - ca.crt, ca.key"
+echo "./build-dh  - dh1024.pem"
+echo "./build-key-server 'Server' - Server.crt,  Server.csr, Server.key"
+echo "./build-key 'Client1' - Client1.crt,  Client1.csr, Client.key"
+echo "openvpn --genkey --secret $Company/ta.key"

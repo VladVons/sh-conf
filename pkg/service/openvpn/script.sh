@@ -8,21 +8,39 @@ source $DIR_ADMIN/conf/script/system.sh
 # ------------------------
 Init()
 {
-  cd $cDirRsa
-  . ./vars
+  aCompany=$1
 
-  echo "Key storage output: $KEY_DIR"
-  echo
+  Company=$aCompany
+  DirKey=$(pwd)/key
+  #mkdir -p $DirKey
+  . ./vars
+  cd $cDirRsa
 }
 
 
-NewClient()
+GenServer()
 {
-  CheckParam "CheckFile(aName='$1')" $# 1 1
-  aName=$1
-  Log "$0->$FUNCNAME, $aName"
+  CheckParam "CheckFile(aCompany='$1')" $# 1 1
+  aCompany=$1
+  Log "$0->$FUNCNAME, $aCompany"
 
-  Init
+  Init $aCompany
+
+  ./clean-all
+  ./build-ca
+  ./build-dh
+  ./build-key-server $aCompany
+  openvpn --genkey --secret $DirKey/$aCompany/ta.key
+}
+
+
+GenClient()
+{
+  CheckParam "CheckFile(aCompany='$1', aName='$2')" $# 2 2
+  aCompany=$1; aName=$2
+  Log "$0->$FUNCNAME, $aCompany, $aName"
+
+  Init $aCompany
   ./build-key $aName
 }
 
@@ -46,6 +64,7 @@ Reserved()
 
 # ------------------------
 case $1 in
-    NewClient)	$1	$2 ;;
-    Reserved)	$1	$2 ;;
+    GenClient)	$1 $2 $3 ;;
+    GenServer)	$1 $2 $3 ;;
+    Reserved)	$1 $2 $3 ;;
 esac
