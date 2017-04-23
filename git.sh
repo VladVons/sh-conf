@@ -1,6 +1,16 @@
 #!/bin/bash
 
 
+GitAuth()
+{
+  # sign with eMail
+  git config --global user.email "vladvons@gmail.com"
+
+  # no password.
+  git config --global credential.helper 'cache --timeout=360000'
+}
+
+
 GitSyncToServ()
 # sync only changes from disk to server.
 {
@@ -33,6 +43,7 @@ GitToServ()
 #mkdir -p /admin/conf && rsync --update --recursive --links tr24.oster.com.ua::AdminFull /admin/conf
 
 clear
+#GitAuth
 case $1 in
     GitToServ|t)    GitToServ   "$2" "$3" ;;
     GitFromServ|f)  GitFromServ "$2" "$3" ;;
