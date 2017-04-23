@@ -195,8 +195,12 @@ DirArchive()
 
 ConfUpdate()
 {
-  cd $DIR_ADMIN/conf/pkg/service/rsync
-  ./script.sh conf
+  if [ "$gSkipRsync" == "yes" ] ; then
+    echo "Warning: gSkipRsync = $gSkipRsync"
+  else
+    cd $DIR_ADMIN/conf/pkg/service/rsync
+    ./script.sh conf
+  fi
 }
 
 
