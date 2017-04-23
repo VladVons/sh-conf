@@ -5,7 +5,7 @@
 #---
 
 # Version
-gVerInfo="1.14, 2016-10-14, VladVons@gmail.com"
+gVerInfo="1.15, 2017-04-22, VladVons@gmail.com"
 
 
 # Root
@@ -35,7 +35,6 @@ gFileLog=$DIR_ADMIN/conf.log
 gFileHost=$gDirHost/host.conf
 gFileSysLog="/var/log/syslog"
 
-gExclArch="_inf"
 gHostFriendPassw="20160101"
 
 # Network

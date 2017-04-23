@@ -168,7 +168,7 @@ ConfBackup()
   tar --verbose --create --gzip --file $FileNameArc $Files
 
   FileNameArc=${FileName}_dat.tgz
-  tar --verbose --create --gzip --dereference --exclude=$gExclArch --file $FileNameArc $gDirConf
+  tar --verbose --create --gzip --dereference --exclude=_inf --exclude=.git --file $FileNameArc $gDirConf
 
   #FileNameArc=${FileName}.zip
   #zip --recurse-paths --symlinks --password $gHostFriendPassw $FileNameArc $gDirConf
@@ -543,6 +543,15 @@ NetGetHostPorts()
 }
 
 
+NetCheckPort()
+{
+  CheckParam "$0->$FUNCNAME(aHost='$1')" $# 2 2
+  aHost=$1; aPort=$2;
+  Log "$0->$FUNCNAME, $aHost, $aPort"
+
+  nmap -PN -sN $aHost -p $aPort
+}
+
 NetSpeed1()
 {
   File="speedtest_cli.py"
@@ -683,11 +692,14 @@ GrubRepair()
 clear
 case $1 in
     ArchUnpack)        $1 $2 $3 $4;;
+
     ConfBackup|cb)     ConfBackup ;;
     ConfUpdate|cu)     ConfUpdate ;;
+
     CpuStress)         $1 $2 $3 $4;;
     GrubRepair)        $1 $2 $3 $4;;
     FindFuncLib)       $1 $2 $3 $4;;
+
     DirClearMask)      $1 $2 $3 $4;; 
     DirSize)           $1 $2 $3 $4;; 
     DirArchive)        $1 $2 $3 $4;; 
@@ -700,21 +712,27 @@ case $1 in
     DirStrFind)        $1 $2 $3 $4;;
     DirSync)           $1 $2 $3 $4;; 
     DirToLower)        $1 $2 $3 $4;;
+
     DiskClean)         $1 $2 $3 $4;;
     LogClear)          $1 $2 $3 $4;;
     MailSendFile)      $1 $2 $3 $4;;
+
+    NetCheckPort)      $1 $2 $3 $4;;
     NetGetExtIP)       $1 $2 $3 $4;;
     NetGetHosts)       $1 $2 $3 $4;;
     NetGetHostPorts)   $1 $2 $3 $4;;
     NetSpeed1)         $1 $2 $3 $4;;
     NetSpeed2)         $1 $2 $3 $4;;
+
     PasswGenerator)    $1 $2 $3 $4;;
+
     PkgInstalled)      $1 $2 $3 $4;;
     PkgListInst)       $1 $2 $3 $4;;
     PkgRemoveAll)      $1 $2 $3 $4;;
     PkgRemoveBad)      $1 $2 $3 $4;;
     PkgSave)           $1 $2 $3 $4;;
     PkgUpdate|pu)      PkgUpdate $2 $3 $4;;
+
     SambaBackup)       $1 $2 $3 $4;;
     ShutDown)          $1 $2 "$3" $4;;
     SymLinkBackup)     $1 $2 $3 $4;;
