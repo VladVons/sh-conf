@@ -1,7 +1,9 @@
-# run 'sh' and execute '. ./vars' 
+# IN: 
+# DirKey, cDirRsa, Company
 
 export D=$DirKey
-export KEY_CONFIG=$D/openssl.cnf
+export OPENSSL="openssl"
+export KEY_CONFIG=$($cDirRsa/whichopensslcnf $cDirRsa)
 export KEY_DIR=$D/$Company
 export KEY_SIZE=1024
 
@@ -13,11 +15,11 @@ export KEY_EMAIL="VladVons@gmail.com"
 export KEY_OU=$Company
 export KEY_NAME="${KEY_OU}_EasyRSA"
 
-echo "Key path: $KEY_DIR"
+echo "Key path: $KEY_DIR, $KEY_CONFIG"
 echo "usage steps:"
 echo "./clean-all - index.txt, serial"
 echo "./build-ca  - ca.crt, ca.key"
 echo "./build-dh  - dh1024.pem"
-echo "./build-key-server 'Server' - Server.crt,  Server.csr, Server.key"
-echo "./build-key 'Client1' - Client1.crt,  Client1.csr, Client.key"
+echo "./build-key-server Server1 - Server1.crt,  Server1.csr, Server1.key"
+echo "./build-key Client1        - Client1.crt,  Client1.csr, Client.key"
 echo "openvpn --genkey --secret $Company/ta.key"
