@@ -462,6 +462,8 @@ PkgRemoveBad()
 
     rm /var/lib/dpkg/info/${i}.*
     dpkg --purge --force-remove-reinstreq $i
+
+    apt-get autoremove --yes
   done
 
   PkgUpdate
@@ -549,11 +551,13 @@ NetGetHostPorts()
 
 NetCheckPort()
 {
-  CheckParam "$0->$FUNCNAME(aHost='$1')" $# 2 2
+  CheckParam "$0->$FUNCNAME(aHost='$1', aPort='$2')" $# 2 2
   aHost=$1; aPort=$2;
   Log "$0->$FUNCNAME, $aHost, $aPort"
 
-  nmap -PN -sN $aHost -p $aPort
+  #nmap -PN -sN $aHost -p $aPort
+  #nc -z host.example.com 1-1024
+  nc -zv oster.com.ua $aHost $aPort
 }
 
 NetSpeed1()
