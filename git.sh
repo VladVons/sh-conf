@@ -3,7 +3,7 @@
 
 GitAuth()
 {
-  # sign with eMail
+  # sign with eMail 1
   git config --global user.email "vladvons@gmail.com"
 
   # no password.
