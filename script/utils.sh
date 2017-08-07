@@ -243,7 +243,7 @@ DirFindLatest()
 
   find $aDir -printf '%T+ %p\n' | \
     sort -r | \
-    head --lines 25
+    head --lines 40
 }
 
 
@@ -453,6 +453,10 @@ PkgRemoveBad()
 {
   Log "$0->$FUNCNAME"
 
+  apt-get install byobu
+  purge-old-kernels
+  apt-get autoremove --purge
+
   declare -a Files=$(dpkg -l | tail -n +6 | awk '{print $1,$2}' | grep -v "ii" | awk '{print $2}')
 
   for i in ${Files[@]}; do
@@ -462,6 +466,10 @@ PkgRemoveBad()
 
     rm /var/lib/dpkg/info/${i}.*
     dpkg --purge --force-remove-reinstreq $i
+
+    if [[ $i != *"linux-image"* ]]; then
+      apt-get install --yes $i
+    fi
 
     apt-get autoremove --yes
   done
@@ -487,7 +495,9 @@ PkgUpdate()
 # ------------------------
 {
   Log "$FUNCNAME"
-  
+ 
+  ExecM "apt-get autoremove --yes"
+ 
   ExecM "dpkg --configure -a" "repair"
   #ExecM "dpkg --configure -a --force-depends"
   ExecM "apt-get install --fix-broken --yes" "fix broken"

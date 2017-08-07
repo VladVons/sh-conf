@@ -18,3 +18,8 @@ ScriptBeforeInstall()
   # allow user catch USB devices in guest system
   usermod -G vboxusers -a $gUser
 }
+
+Expand()
+{
+ VBoxManage modifyhd YOUR_HARD_DISK.vdi --resize SIZE_IN_MB
+}
