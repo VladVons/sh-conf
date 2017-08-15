@@ -2,4 +2,5 @@
 
 source ./script/utils.sh
 
+ConfUpdate
 PkgUpdate

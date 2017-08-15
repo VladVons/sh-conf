@@ -98,9 +98,12 @@ LVM()
   lvrename vgdata vol1 vol3
 
   #--- logical volume resize
+  umount -l /dev/vgdata/vol1
   e2fsck -ff /dev/vgdata/vol1
   #lvreduce -L -4G /dev/vgdata/vol1
-  lvresize --size -4G /dev/vgdata/vol1
+  #lvresize --size -4G /dev/vgdata/vol1
+  lvresize --size +4G /dev/vgdata/vol1
+  mount /dev/vgdata/vol1
   resize2fs /dev/vgdata/vol1
 
   #--- logical volume remove

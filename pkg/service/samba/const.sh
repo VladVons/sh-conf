@@ -5,7 +5,7 @@ source $DIR_ADMIN/conf/script/const.sh
 cApp="samba"
 
 cPkgName="$cApp"
-cPkgAlso="winbind"
+cPkgAlso="winbind samba-vfs-modules"
 
 cProcess="smb|nmb|winbindd"
 cPort="137|138|139|445"

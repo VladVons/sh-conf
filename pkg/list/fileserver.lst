@@ -5,6 +5,7 @@ monit
 nfs-kernel-server
 pure-ftpd
 samba
+samba-vfs-modules
 tftpd-hpa
 transmission-daemon 
 iscsitarget
