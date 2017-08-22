@@ -122,6 +122,9 @@ Audio()
   amixer scontrols
   amixer sset 'Master' 50%
 
+  # no sound on headphones
+  alsactl restore
+
   # list audio devices
   aplay -l
   ls -l /dev/snd
