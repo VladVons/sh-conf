@@ -100,6 +100,7 @@ python3-smbc
 sqlite3
 stress
 sysbench
+synaptic
 tcpdump
 tdb-tools
 teamviewer
@@ -131,3 +132,5 @@ zenmap
 zip
 
 byobu
+bcmwl-kernel-source
+seahorse

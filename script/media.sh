@@ -34,6 +34,8 @@ DirProcess()
           lame --silent --scale 3 --resample $aPar1 --vbr-new -B $aPar2 "$i" "${FileOut%.wav}.mp3" ;;
         jpg_Compress)
           jpegoptim --max=$aPar1 --dest="$DirOut" "$i"
+        video_Compress)
+          ffmpeg -i "$i" -s $aPar1 -strict -2 "$FileOut"
       esac
     fi;
   done
@@ -62,6 +64,16 @@ AudioCompress()
 
   Resample=32
   DirProcess mp3_Compress "$aDirIn" "$aDirOut" "*.mp3" $Resample $aBitRate 
+}
+
+
+VideoCompress()
+{
+  CheckParam "$0->$FUNCNAME(aDirIn='$1', aDirOut='$2', aBitRate='$3')" $# 2 3
+  aDirIn="$1"; aDirOut="$2"; aBitRate=${3:-320x240};
+  Log "$0->$FUNCNAME, $aDirIn, $aDirOut, $aBitRate"
+
+  DirProcess video_Compress "$aDirIn" "$aDirOut" "*.mp4" $aBitRate 
 }
 
 

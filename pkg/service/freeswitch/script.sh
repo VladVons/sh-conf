@@ -26,10 +26,10 @@ Clear()
 {
   Log "$0->$FUNCNAME"
 
-  #echo > $cLog1
-  #echo > $cDB_csv
+  echo > $cLog1
+  echo > $cDB_csv
 
-  #sqlite3 $cDB_sql "DELETE FROM cdr ;"
+  sqlite3 $cDB_sql "DELETE FROM cdr ;"
   phones="2011|2010|2006|2007|9102|9103|9104|9105|9106|9109|9110|9113"
   #phones="2010|2011"
   find $DirRecord -type f | egrep "_($phones)[_\.]" | xargs rm -f

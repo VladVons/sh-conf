@@ -41,6 +41,16 @@ SQL()
 }
 
 
+DbSQL()
+# ----------------------
+{
+  aDB="$1"; aSQL="$2"; aHost=${3:-"localhost"};
+
+  mysql $gAuth --host=$aHost --database=$aDB --disable-column-names --batch --execute="$aSQL"
+}
+
+
+
 dbCreate()
 # ----------------------
 {
@@ -82,6 +92,21 @@ DbDelete()
 }
 
 
+DbDeleteTables()
+# ----------------------
+{
+  aDBName="$1";
+  Log "$0->$FUNCNAME, $aDBName"
+
+  Tables=$(DbSQL $aDBName "SHOW TABLES;")
+  for Table in $Tables
+  do
+    #echo "Deleting $Table from $aDBName"
+    DbSQL $aDBName "DROP TABLE $Table;"
+  done
+}
+
+
 DbList()
 # ----------------------
 {
@@ -96,3 +121,4 @@ dbShowVar()
 
   SQL "SHOW VARIABLES;"
 }
+
