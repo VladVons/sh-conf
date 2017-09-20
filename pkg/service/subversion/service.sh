@@ -32,6 +32,7 @@ Init()
   #modify reposName/svnserve.conf reposName/passwd and test it
   #svn checkout svn://localhost/jdv MyTemp --username vv --password jdv2012
   #svn checkout svn://localhost/tr21-conf MyTemp --username VladVons --password 19710819
+  #svn checkout svn://192.168.2.111/LyricTxt LyricTxt --username VladVons --password 19710819
 }
 
 

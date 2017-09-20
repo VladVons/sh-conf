@@ -11,4 +11,5 @@ cProcess="svn"
 cService="$gDirD/$cApp"
 cPort="3690"
 cLog1="$gFileSysLog"
-  
+
+gDirSvn="/home/vladvons/svn"

@@ -1,11 +1,10 @@
 #!/bin/bash
 #--- VladVons@gmail.com
 
-
+source ./const.sh
 source $DIR_ADMIN/conf/script/system.sh
 
 
-gDirSvn="$gDirData/db/svn"
 gOwner="svn"
 
 
@@ -32,7 +31,7 @@ RepDel()
   aName="$1"; 
   Log "$0->$FUNCNAME, $aName"
 
-  if YesNo "REmove repository $aName"; then
+  if YesNo "Remove repository $aName"; then
     rm -rf "$gDirSvn/$aName"
   fi;
 }
