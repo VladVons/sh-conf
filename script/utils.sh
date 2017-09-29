@@ -495,7 +495,9 @@ PkgUpdate()
 # ------------------------
 {
   Log "$FUNCNAME"
- 
+
+  ExecM "rm /var/lib/dpkg/lock"
+
   ExecM "apt-get autoremove --yes"
  
   ExecM "dpkg --configure -a" "repair"

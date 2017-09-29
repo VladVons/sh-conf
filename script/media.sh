@@ -33,9 +33,9 @@ DirProcess()
         wav_ToMp3)
           lame --silent --scale 3 --resample $aPar1 --vbr-new -B $aPar2 "$i" "${FileOut%.wav}.mp3" ;;
         jpg_Compress)
-          jpegoptim --max=$aPar1 --dest="$DirOut" "$i"
+          jpegoptim --max=$aPar1 --dest="$DirOut" "$i";;
         video_Compress)
-          ffmpeg -i "$i" -s $aPar1 -strict -2 "$FileOut"
+          ffmpeg -i "$i" -s $aPar1 -strict -2 "$FileOut";;
       esac
     fi;
   done

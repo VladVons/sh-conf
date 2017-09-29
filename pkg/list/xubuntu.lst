@@ -9,7 +9,6 @@ apache2
 arj
 audacious
 audacity
-audio-recorder
 axel
 bibletime
 bless
@@ -83,7 +82,6 @@ php5
 pidgin
 pinta
 playonlinux
-pulseaudio
 qpdf
 radiotray
 rar
@@ -134,3 +132,18 @@ zip
 byobu
 bcmwl-kernel-source
 seahorse
+
+#--- Video drivers for unplagged monitor
+nvidia-current
+xserver-xorg-video-dummy
+xvfb
+
+#--- printer HP
+hplip-gui
+
+#--- Audio
+# addgroup linux audio
+pulseaudio
+pulseaudio-module-jack
+audio-recorder
+soundconverter
