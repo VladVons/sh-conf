@@ -1,1 +1,1 @@
-/var/www/app/cgp/conf/config.php
+/var/www/html/cgp/conf/config.php

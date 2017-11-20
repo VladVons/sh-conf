@@ -26,10 +26,11 @@ MySQLBackupHosting()
 MySQLBackupArchive()
 # ------------------------
 {
-  Log "$0->$FUNCNAME"
+  aMask=${1:-"app_|3w_"};
+  Log "$0->$FUNCNAME, $aMask"
 
   cd $DIR_ADMIN/conf/pkg/service/mysql-server
-  ./script.sh DumpMask "app_|3w_"
+  ./script.sh DumpMask "$aMask"
 }
 
 
@@ -86,25 +87,27 @@ Hosting()
 DiskClearTemp()
 # ------------------------
 {
-  Log "$0->$FUNCNAME"
+  aDays=${1:-"30"};
+  Log "$0->$FUNCNAME, $aDays"
 
   echo "Clear temp files"
-  DirRemoveOld $gDirSamba/Temp 30
-  DirRemoveOld $gDirSamba/Recycle 30
-  DirRemoveOld /tmp 30
+  DirRemoveOld $gDirSamba/Temp $aDays
+  DirRemoveOld $gDirSamba/Recycle $aDays
+  DirRemoveOld /tmp $aDays
 }
 
 
 DiskClearBackup()
 # ------------------------
 {
-  Log "$0->$FUNCNAME"
+  aDays=${1:-"7"};
+  Log "$0->$FUNCNAME, $aDays"
 
   echo "Clear SQL archive"
-  DirRemoveOld $gDirBackupMySQL 7
+  DirRemoveOld $gDirBackupMySQL $aDays
 
   echo "Clear 1C archive"
-  DirRemoveOld /home/BackUp/1C 90
+  DirRemoveOld /home/BackUp/1C $aDays
 }
 
 

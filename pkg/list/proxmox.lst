@@ -18,7 +18,7 @@ apcupsd
 #nut
 
 #--- collectd 
-collectd
+#collectd
 hddtemp
 omping
 lm-sensors
@@ -41,6 +41,7 @@ acpid
 gpm
 
 #--- internet
+net-tools
 pppoeconf
 dnsutils
 lynx

@@ -1,10 +1,11 @@
 #--- Download image 
 #https://www.raspberrypi.org/downloads/raspbian/
 wget https://downloads.raspberrypi.org/raspbian_lite_latest -O raspbian-jessie-lite.zip
+unzip raspbian-jessie-lite.zip
 
 #--- List usb disks
 df -h 
-dd bs=4M if=raspbian-jessie.img of=/dev/sdX
+dd bs=4M conv=fsync if=2017-09-07-raspbian-stretch-lite.img of=/dev/sdX
 sync
 
 #--- Boot Raspberry
@@ -20,6 +21,9 @@ raspi-config
 
 #--- Install packages
 apt-get install --yes --no-install-recommends mc rsync
+
+#https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+apt-get install i2c-tools python-smbus
 
 #--- Check python version
 python -V

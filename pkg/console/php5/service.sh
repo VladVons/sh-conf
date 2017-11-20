@@ -46,6 +46,8 @@ Init()
   #ln -s /etc/php5/cli/conf.d/mcrypt.ini /etc/php5/mods-available
   #php5enmod mcrypt
   #cService apache2 restart
+
+  a2enmod php7.0
 }
 
 
@@ -55,6 +57,7 @@ InstallEx()
   Log "$0->$FUNCNAME"
 
   Install
+  apt-get install libapache2-mod-php
 
   pecl install geoip timezonedb
 

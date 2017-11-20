@@ -147,3 +147,8 @@ pulseaudio
 pulseaudio-module-jack
 audio-recorder
 soundconverter
+
+#--- youtube downloader
+youtubedl
+#add-apt-repository ppa:flexiondotorg/youtube-dl-gui
+youtube-dlg

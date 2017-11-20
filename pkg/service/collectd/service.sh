@@ -11,7 +11,7 @@ InstallGUI()
   Log "$0->$FUNCNAME"
 
   PkgInstallTry git
-  git clone git://github.com/pommi/CGP.git /var/www/app/cgp
+  git clone git://github.com/pommi/CGP.git /var/www/html/app/cgp
 
   #ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
   a2enmod rewrite
@@ -37,10 +37,10 @@ Clear()
 {
   Log "$0->$FUNCNAME"
   
-  cService $cApp stop 
+  $cService $cApp stop 
   sleep 1
   rm -R /var/lib/collectd/rrd/*
-  cService $cApp start
+  $cService $cApp start
 }
 
 

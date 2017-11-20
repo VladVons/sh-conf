@@ -25,7 +25,7 @@ FileListInstall()
       Installed=$(_PkgCheck $File)
       if [ ! "$Installed" ]; then
         echo $File
-        apt-get install -y $File
+        apt-get install --yes --no-install-recommends $File
       fi
     done
   else
@@ -33,4 +33,5 @@ FileListInstall()
   fi
 }
 
-FileListInstall xubuntu.lst
+#FileListInstall xubuntu.lst
+FileListInstall proxmox.lst
