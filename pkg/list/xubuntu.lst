@@ -94,6 +94,7 @@ sane
 skype
 smartmontools
 smbclient
+smbnetfs
 python3-smbc
 sqlite3
 stress

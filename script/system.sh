@@ -176,6 +176,9 @@ UserAddSys()
   useradd $aUser --groups $aGroup --home $aHomeDir --shell $aShell
   #echo "$aUser:$aPassw" | chpasswd
   echo -e "$aPassw\n$aPassw\n" | passwd $aUser
+ 
+  #usermod $aUser -a -G sudo
+  #usermod $aUser -s /usr/sbin/nologin
 }
 
 

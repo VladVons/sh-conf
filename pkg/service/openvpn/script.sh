@@ -54,11 +54,12 @@ Reserved()
   echo "IP pairs are: [1-2], [5-6], ... [253-254]"
   seq 1 4 253 | xargs
 
+  Dir="oster"
   echo
-  grep --dereference-recursive "ifconfig" "etc/openvpn/server1/ccd" | awk '{print $3,$2,$1}' | sort -V
+  grep --dereference-recursive "ifconfig" "etc/openvpn/$Dir/ccd" | awk '{print $3,$2,$1}' | sort -V
 
   echo
-  grep --dereference-recursive "iroute" "etc/openvpn/server1/ccd" | awk '{print $2,$1}' | sort -V
+  grep --dereference-recursive "iroute" "etc/openvpn/$Dir/ccd" | awk '{print $2,$1}' | sort -V
 }
 
 

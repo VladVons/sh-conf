@@ -7,16 +7,16 @@
 #--- file manager
 mc
 
-
 #--- statictic
 htop
 iftop
 
-
 #--- services
 monit
-squid3
 
+squid3
+openssl 
+libssl-dev
 
 #--- network
 iptables-persistent
@@ -26,7 +26,7 @@ nmap
 openvpn
 bind9
 fail2ban
-
+cifs-utils
 
 #--- internet
 dnsutils

@@ -38,6 +38,7 @@ SysInfo()
   ExecM "lsb_release -a" "get ubuntu version"
 
   cat /proc/cpuinfo
+  grep aes /proc/cpuinfo
   lscpu
   lshw -class processor
   dmidecode
@@ -122,8 +123,13 @@ Audio()
   amixer scontrols
   amixer sset 'Master' 50%
 
-  # no sound on headphones
+  # no sound on headphones 1
   alsactl restore
+
+  # no sound on headphones 2
+  apt-get remove --purge alsa-base pulseaudio
+  apt-get install alsa-base pulseaudio
+  alsa force-reload
 
   # list audio devices
   aplay -l

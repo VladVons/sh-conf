@@ -1,10 +1,12 @@
 OpenVPN in lxc container:
-https://blog.felixbrucker.com/2015/10/01/how-to-enable-tuntap-inside-lxc/
+https://blog.felixbrucker.com/2015/10/01/how-to-enable-tuntap-inside-lxc
+http://heider.io/blog/2013/10/26/openvpn-in-a-lxc-container
+
 
 on PVE host:
 /etc/lxc/default.conf or /etc/pve/lxc/<ID>.conf
   lxc.cgroup.devices.allow = c 10:200 rwm
-
+  lxc.mount.entry = /dev/net dev/net none bind,create=dir
 
 on lxc host:
 /etc/rc.local

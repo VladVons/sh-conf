@@ -24,6 +24,7 @@ FileListInstall()
     for File in ${Files[@]}; do
       Installed=$(_PkgCheck $File)
       if [ ! "$Installed" ]; then
+        echo 
         echo $File
         apt-get install --yes --no-install-recommends $File
       fi
@@ -33,5 +34,19 @@ FileListInstall()
   fi
 }
 
+
+Update()
+{
+  apt-get update
+  apt-get dist-upgrade
+
+  #--- raspberry
+  #rpi-update
+  #reboot
+}
+
+
+Update
 #FileListInstall xubuntu.lst
-FileListInstall proxmox.lst
+#FileListInstall proxmox.lst
+FileListInstall raspberry.lst
