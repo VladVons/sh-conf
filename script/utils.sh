@@ -654,6 +654,9 @@ UsbFormat()
 {
   Log "$0->$FUNCNAME"
 
+  # ubuntu zero fill free space
+  #dd if=/dev/zero of=outputfile bs=1024K count=1024
+
   for dev in $(UsbList); do
     Size=$(blockdev --getsz $dev)
     if YesNo "format $dev $(expr $Size / 1000))Kb"; then

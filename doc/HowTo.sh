@@ -124,7 +124,7 @@ Audio()
   amixer sset 'Master' 50%
 
   # no sound on headphones 1
-  alsactl restore
+  alsactl restore # no root !
 
   # no sound on headphones 2
   apt-get remove --purge alsa-base pulseaudio

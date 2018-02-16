@@ -34,6 +34,9 @@ SiteAdd()
 
   if [ -z "$aPassw" ]; then
     aPassw=$(cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 10)
+
+    #Dict='/usr/share/dict/cracklib-small'
+    #aPassw=$(cat $Dict | grep '^.\{4\}$' | sed 's/./\u&/' | shuf -n 2 | tr -d "\n"; echo $(shuf -i100-999 -n 1))
   fi;
 
   Dir="$gDirHosting/3w_${aSite}"
@@ -72,6 +75,8 @@ SiteAdd()
 
   # brief info for user
 
+  FileInfo="$Dir/info.txt"
+
 echo "
 Site:      $aSite
 Explorer:  $aSite/extpl
@@ -93,7 +98,9 @@ OpenCart
 Admin:     $aSite/admin
 User:      admin
 Passw:     ---
-" > $Dir/info.txt
+" > $FileInfo
+
+cat $FileInfo
 }
 
 

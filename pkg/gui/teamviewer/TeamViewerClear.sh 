@@ -1,0 +1,11 @@
+User="linux"
+Home="/home/$User"
+
+teamviewer --daemon stop
+
+rm -R $Home/.local/share/teamviewer12
+rm -R $Home/.local/share/teamviewer
+rm -R $Home/.config/teamviewer
+rm -f /opt/teamviewer/config/global.conf
+
+teamviewer --daemon start
