@@ -550,6 +550,14 @@ NetGetHosts()
 }
 
 
+NetGetHostOS()
+{
+  aHost=$1
+  Log "$0->$FUNCNAME, Host->$aHost"
+
+  ExecM "nmap -v -Pn -O $aHost"
+}
+
 NetGetHostPorts()
 {
   CheckParam "$0->$FUNCNAME(aHost='$1')" $# 1 1
@@ -743,6 +751,7 @@ case $1 in
     NetCheckPort)      $1 $2 $3 $4;;
     NetGetExtIP)       $1 $2 $3 $4;;
     NetGetHosts)       $1 $2 $3 $4;;
+    NetGetHostOS)      $1 $2 $3 $4;;
     NetGetHostPorts)   $1 $2 $3 $4;;
     NetSpeed1)         $1 $2 $3 $4;;
     NetSpeed2)         $1 $2 $3 $4;;
