@@ -22,7 +22,7 @@
 /dev/sr0        /mnt/cdrom      udf,iso9660,user,noauto 0 0
 
 #--- Windows Samba sharing
-//192.168.2.1/temp      /mnt/smb/tr24   cifs    username=guest,password=guest,noauto,iocharset=utf8,sec=ntlm,uid=1000,rw  0  0
+//192.168.2.1/temp      /mnt/smb/tr24   cifs    username=guest,password=guest,noauto,iocharset=utf8,sec=ntlm,uid=1000,rw,vers=1.0  0  0
 
 #--- RAM temp
 tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=512M 0 0

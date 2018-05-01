@@ -11,6 +11,9 @@ source $DIR_ADMIN/conf/script/service.sh
 TestEx()
 {
   Test
+
+  nmap -p 80 --open $gIntNet 
+  avahi-browse -art
 }
 
 

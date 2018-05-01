@@ -75,6 +75,10 @@ CheckEnv()
     #echo "File not found $gFileHost"
     #exit 0;
   fi;
+
+  if [ -z "$gIntNet" ]; then
+    gIntNet=$(ip addr show | grep "192.168" | awk '{ print $2 }')
+  fi;
 }
 
 CheckEnv

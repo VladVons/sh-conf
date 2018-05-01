@@ -1,0 +1,14 @@
+HowTo ArmBian
+https://istarik.ru/blog/orangepi/79.html
+
+download image from
+https://www.armbian.com/download/
+
+# write to USB
+dd bs=4M conv=fsync if=2017-09-07-raspbian-stretch-lite.img of=/dev/sdX
+
+
+#--- Boot Raspberry
+user: root
+password: 1234
+

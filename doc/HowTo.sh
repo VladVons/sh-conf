@@ -44,6 +44,9 @@ SysInfo()
   dmidecode
   hardinfo
   dmesg | grep tty
+
+  # Motherboard
+  dmidecode -t 2
 }
 
 

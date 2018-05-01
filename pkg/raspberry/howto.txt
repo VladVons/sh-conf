@@ -29,7 +29,7 @@ apt-get install i2c-tools python-smbus
 python -V
 
 #--- install pip
-#apt-get install python-pip
+apt-get install python-pip --no-install-recommends
 wget https://bootstrap.pypa.io/get-pip.py
 python get-pip.py
 

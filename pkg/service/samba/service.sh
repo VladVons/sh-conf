@@ -19,6 +19,7 @@ TestEx()
   # ExecM "wbinfo -u" 
 
   #ExecM "nmblookup -S '*'" "search for WINS computers"
+  ExecM "tail /var/log/kern.log"
 }
 
 
