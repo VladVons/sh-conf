@@ -21,7 +21,7 @@ TestEx()
   ShowFile "$cLog1" ST 15
   #ShowFile "$cLog2" ST 15
 
-  echo 
+  echo
   grep PUSH_REPLY $cLog2 | awk '{ print $2, $3, $4, $7}'
 }
 

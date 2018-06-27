@@ -2,10 +2,10 @@
 
 source $DIR_ADMIN/conf/script/const.sh
 
-cApp="nfs-kernel-server"
-
+cApp="dnsmasq"
 cPkgName="$cApp"
-cPkgAlso="nfs4-acl-tools"
-cProcess="nfsd"
+
+cProcess="$cApp"
 cService="$gDirD/$cApp"
-cLog1=$gFileSysLog
+cPort="69"
+cLog1="$gFileSysLog"

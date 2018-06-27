@@ -296,6 +296,8 @@ DirSetAllPerm()
   aDir="$1";
   Log "$0->$FUNCNAME, $aDir"
 
+  #chmod -R go+rX,go-w $aDir
+
   find "$aDir" -type f -print0 | xargs -0 chmod 666
   find "$aDir" -type d -print0 | xargs -0 chmod 777
 }
@@ -585,6 +587,7 @@ NetSpeed1()
   File="speedtest_cli.py"
 
   if [ ! -r $File ]; then
+    #apt install speedtest-cli
     wget --no-check-certificate https://raw.github.com/sivel/speedtest-cli/master/$File
     chmod +x $File
   fi

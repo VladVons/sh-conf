@@ -22,7 +22,26 @@ InitPAM()
 }
 
 
+AddUserNoLogin()
+{
+  aUser="$1";
+  Log "$0->$FUNCNAME, $aUser"
+
+  NoLogin="/usr/sbin/nologin"
+  Shell="/etc/shells"
+  grep -q -F $NoLogin $Shell || echo -e "\n$NoLogin" >> $Shell
+
+  DirHome="/home/$aUser"
+  mkdir -p $DirHome
+  useradd $aUser --home-dir=$DirHome --shell=/usr/sbin/nologin
+  passwd $aUser
+  chown $aUser:$aUser $DirHome
+  echo "Hello user $aUser" > $DirHome/hello.txt
+}
+
+
 # ------------------------
 case $1 in
-    InitPAM)	$1	$2 ;;
+    InitPAM)            $1 $2 ;;
+    AddUserNoLogin)     $1 $2 ;;
 esac

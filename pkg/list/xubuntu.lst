@@ -153,3 +153,7 @@ soundconverter
 youtubedl
 #add-apt-repository ppa:flexiondotorg/youtube-dl-gui
 youtube-dlg
+
+#--- python
+virtualenv 
+virtualenvwrapper

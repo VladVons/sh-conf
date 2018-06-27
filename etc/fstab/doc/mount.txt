@@ -4,6 +4,8 @@ mount -t ntfs /dev/sdb1 /mnt/ntfs
 
 mount -t cifs //192.168.2.1/temp /mnt/smb/tr24 -o user=guest -o password=guest
 
+mount -t nfs 192.168.5.11:/home/chroot/lxde-32_xenial_i386 /mnt/nfs
+
 mount -o loop path/to/iso/file/YOUR_ISO_FILE.ISO /media/iso
 
 mount -r -t ufs -o ufstype=ufs2 /dev/sdb4 /mnt/ufs

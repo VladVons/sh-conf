@@ -85,9 +85,9 @@ LVM()
   lvs vgdata
 
   #--- create simple volume
-  lvcreate -L 10G -n vol2 vgdata
-  mkfs -t ext4 /dev/vgdata/vol2
-
+  lvcreate -L 10G -n vol21 vgdata
+  mkfs -t ext4 /dev/vgdata/vol21
+  mkfs -t ntfs -Q -L "WinData" /dev/vgdata/vol21
 
   #--- create logical volume 'thin'
   pvesm lvmthinscan vgdata
