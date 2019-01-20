@@ -26,10 +26,19 @@ GenServer()
 
   Init $aCompany
 
+  echo "clean-all"
   ./clean-all
+
+  echo "build-ca"
   ./build-ca
+  
+  echo "build-dh"
   ./build-dh
+
+  echo "build-key-server"
   ./build-key-server $aCompany
+
+  echo "ta.key"
   openvpn --genkey --secret $DirKey/$aCompany/ta.key
 }
 

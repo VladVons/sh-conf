@@ -105,6 +105,7 @@ LVM()
   lvresize --size +4G /dev/vgdata/vol1
   mount /dev/vgdata/vol1
   resize2fs /dev/vgdata/vol1
+  #fsadm resize /dev/vgdata/vol1
 
   #--- logical volume remove
   umount /dev/vgdata/vol2

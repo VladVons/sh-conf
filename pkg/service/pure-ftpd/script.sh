@@ -37,6 +37,9 @@ AddUserNoLogin()
   passwd $aUser
   chown $aUser:$aUser $DirHome
   echo "Hello user $aUser" > $DirHome/hello.txt
+
+  mkdir -p /home/ftp
+  ln -s $DirHome /home/ftp 
 }
 
 

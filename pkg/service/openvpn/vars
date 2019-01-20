@@ -3,7 +3,8 @@
 
 export D=$DirKey
 export OPENSSL="openssl"
-export KEY_CONFIG=$($cDirRsa/whichopensslcnf $cDirRsa)
+#export KEY_CONFIG=$($cDirRsa/whichopensslcnf $cDirRsa)
+export KEY_CONFIG=$cDirRsa/openssl-1.0.0.cnf
 export KEY_DIR=$D/$Company
 export KEY_SIZE=1024
 

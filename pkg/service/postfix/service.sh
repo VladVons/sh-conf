@@ -7,15 +7,15 @@ source $DIR_ADMIN/conf/script/service.sh
 
 
 TestEx()
-# ------------------------
+# ------------------------g
 {
   Test
 
   #echo
-  #telnet smtp.mail.ru 25
+  #telnet smtp.gmail.com 25
 
   #echo
-  #echo "Body text" | mail -s "Subject text" VladVons@mail.ru
+  #echo "Body text" | mail -s "Subject text" VladVons@gmail.com
 }
 
 

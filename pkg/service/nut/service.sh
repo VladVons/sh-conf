@@ -14,15 +14,19 @@ TestEx()
   # check supported driver
   #http://networkupstools.org/stable-hcl.html
 
-  #https://susilon.wordpress.com/2014/08/09/monitoring-a-ups-with-nut-on-debian-or-ubuntu-linux/
-  #driver = powercom -u root
 
-  ExecM "dmesg | grep ttyS"
+  ExecM "dmesg | grep tty[SU]"
   #ExecM "setserial -g /dev/ttyS[0123]"
 
   #ExecM "usbconfig"
   ExecM "upsc MyUPS"
   #ExecM "upsdrvctl -D -u root start"
+  
+  #https://susilon.wordpress.com/2014/08/09/monitoring-a-ups-with-nut-on-debian-or-ubuntu-linux/
+  #driver = powercom -u root
+  #
+  #powercom test
+  #/lib/nut/powercom -a MyUPS -u root -DD
 }
 
 

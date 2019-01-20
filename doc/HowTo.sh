@@ -50,6 +50,20 @@ SysInfo()
 }
 
 
+Sensors()
+# ------------------------
+{
+  cat /sys/class/thermal/thermal_zone*/temp
+
+  apt-get install lm-sensors
+  sensors-detect
+  watch sensors
+
+  apt-get install hddtemp
+  watch hddtemp /dev/sda
+}
+
+
 Device()
 # ------------------------
 {

@@ -23,6 +23,11 @@ InstallEx()
   Install
 
   pip install MySQL-python
+
+  #virtualenv ~/virtualenv/myapp2 --system-site-package
+  #
+  #~/ bashrc
+  #source ~/virtualenv/myapp2/bin/activate
 }
 
 

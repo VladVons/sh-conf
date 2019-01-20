@@ -150,9 +150,10 @@ audio-recorder
 soundconverter
 
 #--- youtube downloader
-youtubedl
+youtube-dl
 #add-apt-repository ppa:flexiondotorg/youtube-dl-gui
 youtube-dlg
+
 
 #--- python
 virtualenv 

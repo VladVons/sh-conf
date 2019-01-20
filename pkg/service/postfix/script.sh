@@ -25,7 +25,7 @@ SendMail()
 
   sleep 1
   echo "mode 2"
-  $DIR_ADMIN/conf/pkg/service/php5/script/TestMail.php
+  $DIR_ADMIN/conf/pkg/console/php5/script/TestMail.php
 }
 
 

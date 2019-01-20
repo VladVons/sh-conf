@@ -3,6 +3,7 @@
 # VladVons@gmail.com
 #---
 
+ca-certificates
 
 #--- file manager
 mc
@@ -16,7 +17,7 @@ iftop
 #--- services
 monit
 pure-ftpd
-
+gpm
 
 #--- network
 fail2ban

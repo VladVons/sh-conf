@@ -1,9 +1,17 @@
+#!/bin/bash
+
 User="linux"
 Home="/home/$User"
+Mac="a0:b0:c0:d0:e0:f1"
 
 teamviewer --daemon stop
 
-rm -R $Home/.local/share/teamviewer12
+IF=$(ifconfig -s | head -2 | tail -1 | awk '{print $1}')
+echo "New MAC $Mac on interface $IF"
+ifconfig $IF hw ether $Mac
+ifconfig $IF
+
+rm -R $Home/.local/share/teamviewer13
 rm -R $Home/.local/share/teamviewer
 rm -R $Home/.config/teamviewer
 rm -f /opt/teamviewer/config/global.conf

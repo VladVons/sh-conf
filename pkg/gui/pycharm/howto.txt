@@ -1,0 +1,8 @@
+Activation code License for PyCharm、WebStorm 2018.2+
+https://licensez.com/
+
+Step 1: IMPORTANT: 
+Add 127.0.0.1 account.jetbrains.com to your host file.
+
+Step 2:
+Then click the copy button to copy the key.
