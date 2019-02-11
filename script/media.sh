@@ -98,6 +98,17 @@ JpgCompress()
 }
 
 
+PngToJpg()
+{
+  CheckParam "$0->$FUNCNAME(aDirIn='$1', aDirOut='$2')" $# 2 2
+  aDirIn="$1"; aDirOut="$2";
+  Log "$0->$FUNCNAME, $aDirIn, $aDirOut"
+
+  #sudo apt-get install imagemagick
+  mogrify -format jpg "$aDirIn/*.png"
+}
+
+
 Install()
 {
   Log "$0->$FUNCNAME"
@@ -113,5 +124,6 @@ case $1 in
     AudioCompress)       "$1" "$2" "$3" ;;
     JpgCompress)         "$1" "$2" "$3" ;;
     WavToMp3)            "$1" "$2" "$3" ;;
+    PngToJpg)            "$1" "$2" "$3" ;;
     Install)             "$1" "$2" "$3" ;;
 esac

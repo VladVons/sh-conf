@@ -12,7 +12,7 @@ _PkgCheck()
 
 
 
-FileListInstall()
+FileListInstall_1()
 # install packages listed in file
 # ------------------------
 {
@@ -35,6 +35,14 @@ FileListInstall()
 }
 
 
+FileListInstall_2()
+{
+  aFile="$1";
+
+  apt-get install --yes --no-install-recommends $(grep -vE "^\s*#" $aFile | tr "\n" " ")
+}
+
+
 Update()
 {
   apt-get update
@@ -47,6 +55,7 @@ Update()
 
 
 Update
-#FileListInstall xubuntu.lst
-#FileListInstall proxmox.lst
-FileListInstall raspberry.lst
+#FileListInstall_1 xubuntu.lst
+#FileListInstall_1 proxmox.lst
+#FileListInstall_1 raspberry.lst
+FileListInstall_2 vpn.lst

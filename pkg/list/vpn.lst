@@ -1,0 +1,29 @@
+mc
+htop
+iptables-persistent
+nmap
+lynx
+rsync
+whois
+net-tools
+locate
+sudo
+sqlite3
+
+#--- mail
+ssmtp
+mailutils
+openssl 
+libssl-dev
+
+#--- service
+openvpn
+monit
+fail2ban
+pure-ftpd
+#mariadb
+
+#--- archiver
+zip
+unzip
+p7zip

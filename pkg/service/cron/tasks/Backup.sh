@@ -22,7 +22,7 @@ DelOldArch()
   # echo "yes" > /etc/pure-ftpd/conf/KeepAllFiles
 
   find -L $aDir -type f -name *.7z -mtime +${aDays} -delete
-  find $aDir -type d -empty -delete
+  find -l $aDir -type d -empty -delete
 }
 
 

@@ -1,0 +1,8 @@
+setup google spf
+
+https://centralops.net
+NsLookup
+query type: TXT
+
+name            class   type    data                                                    time to live
+oster.com.ua    IN      TXT     v=spf1 ip4:5.58.6.236 include:_spf.google.com ~all      3600s   (01:00:00)

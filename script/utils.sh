@@ -350,6 +350,8 @@ DirToLower()
 
   find $aDir | xargs rename 'y/A-Z/a-z/' *
   #rename 'y/A-Z/a-z/' *
+ 
+  #rename 's/\.jpeg$/\.jpg/' *.jpeg
 }
 
 
@@ -567,7 +569,9 @@ NetGetHostPorts()
   Log "$0->$FUNCNAME, $aHost"
 
   #http://www.cyberciti.biz/networking/nmap-command-examples-tutorials/
-  nmap -F $aHost
+  nmap -F -Pn $aHost
+  nmap -Pn -p 80 $aHost
+  nmap -v -Pn -p 1-65536 $aHos
 }
 
 
@@ -720,6 +724,18 @@ GrubRepair()
   Dev=${DevBoot:0:3}
   mount -t ext4 /dev/$Dev /mnt/$Dev
   grub-install --recheck --root-directory=/mnt/$Dev /dev/$Dev
+}
+
+
+Hibernate()
+{
+  # disable
+  systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+  # enable
+  #systemctl umask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+  systemctl list-unit-files
 }
 
 
