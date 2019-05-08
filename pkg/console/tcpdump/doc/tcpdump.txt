@@ -1,0 +1,5 @@
+nmap -p 139 tr24.oster.com.ua
+
+tcpdump -n -i eth1 port 139
+tcpdump -n -i eth1 "port 139 or port 445"
+

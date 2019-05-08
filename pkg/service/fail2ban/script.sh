@@ -11,6 +11,9 @@ Clear()
 
   service $cProcess stop
 
+  ## fail2ban-client get dbfile
+  rm /var/lib/fail2ban/fail2ban.sqlite3
+
   cd $DIR_ADMIN/conf/pkg/console/iptables-persistent
   ./script.sh RulesClear
   ./script.sh RulesExecute
@@ -61,6 +64,14 @@ SaveBanIP()
 
 
   echo "saved to $File. See action.d/iptables-allports-file.conf"=
+}
+
+Misc()
+{
+  # get DB path
+  fail2ban-client get dbfile
+
+  fail2ban-client status
 }
 
 

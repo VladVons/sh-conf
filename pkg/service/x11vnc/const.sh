@@ -2,10 +2,10 @@
 
 source $DIR_ADMIN/conf/script/const.sh
 
-cApp="ssmtp"
+cApp="x11vnc"
 
 cPkgName="$cApp"
-cPkgAlso="openssl libssl-dev"
-
-#cPort="25"
+cProcess="$cApp"
+cService="$cApp"
+cPort="5900"
 Log="$gFileSysLog"

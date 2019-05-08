@@ -21,6 +21,9 @@ UUID=188624f0-e2c3-4879-b8a6-7b4ce2c7ddf8 none            swap    sw            
 #--- CDROM
 /dev/sr0        /mnt/cdrom      udf,iso9660,user,noauto 0 0
 
+#--- local directory
+/mnt/hdd/data1/home  /home    none    bind
+
 #--- Windows Samba sharing
 //192.168.2.1/temp      /mnt/smb/tr24   cifs    username=guest,password=guest,noauto,iocharset=utf8,sec=ntlm,uid=1000,rw,vers=1.0  0  0
 //192.168.2.1/temp      /mnt/smb/tr24   cifs    username=guest,password=guest,noauto,iocharset=utf8,sec=ntlm,uid=1000,rw,vers=1.0,user  0  0

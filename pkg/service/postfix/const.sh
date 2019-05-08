@@ -5,7 +5,7 @@ source $DIR_ADMIN/conf/script/const.sh
 cApp="postfix"
 
 cPkgName="$cApp"
-cPkgAlso="libsasl2-modules"
+cPkgAlso="libsasl2-modules openssl libssl-dev"
 #cPkgAlso="mailutils"
 #cPkgAlso="libsasl2-modules sasl2-bin mailutils courier-authlib"
 

@@ -31,6 +31,7 @@ RulesClear()
   iptables --flush
   iptables --table nat --flush
   iptables --table nat --delete-chain
+  iptables --table mangle --flush
 
   iptables -P INPUT   ACCEPT
   iptables -P FORWARD ACCEPT
@@ -67,9 +68,10 @@ RulesSave()
   Log "$0->$FUNCNAME"
 
   File="/etc/iptables/rules.v4"
-
   iptables-save > /etc/iptables/rules.v4
   echo "saved to $File" 
+
+  shutdown -c
 }
 
 

@@ -310,6 +310,14 @@ DirRemoveOld()
   aDir=$1; aDays=$2;
   Log "$0->$FUNCNAME, $aDir, $aDays"
 
+
+  #find $aDir -type f -atime +${aDays} -delete
+  ## touch -m -a -d "40 days ago" FileName.txt
+  ## stat FileName.txt 
+
+  #find -L $aDir -type f -atime +${aDays} -delete
+  #find -L $aDir -type d -ctime +${aDays} -delete -empty
+
   find $aDir -type f -mtime +${aDays} -delete
   find $aDir -type d -mtime +${aDays} -delete -empty
 }
@@ -453,6 +461,29 @@ PkgRemoveAll()
 }
 
 
+PkgRemoveOldKernel()
+{
+  Log "$0->$FUNCNAME"
+
+
+  if YesNo "Hint: Update and reboot system first. Continue purge ?"; then
+    echo "Packages to remove"
+
+    # proxmox
+    List=$(dpkg --list | grep -P -o "pve-kernel-\d\S+-pve" | grep -v $(uname -r | grep -P -o ".+\d"))
+    printf '%b\n' $List
+    apt-get purge $List
+
+    # ubuntu
+    List=$(dpkg --list | grep -P -o "linux-image-\d\S+-generic" | grep -v $(uname -r | grep -P -o ".+\d"))
+    printf '%b\n' $List
+    apt-get purge $List
+
+    apt-get autoremove
+  fi;
+}
+
+
 PkgRemoveBad()
 {
   Log "$0->$FUNCNAME"
@@ -479,6 +510,17 @@ PkgRemoveBad()
   done
 
   PkgUpdate
+}
+
+
+PkgRemoveForce()
+{
+  aPkg=$1
+  Log "$0->$FUNCNAME, $aPkg"
+
+  mv /var/lib/dpkg/info/$aPkg.* /tmp/
+  dpkg --remove --force-remove-reinstreq $aPkg
+  apt remove --purge $aPkg
 }
 
 
@@ -570,8 +612,9 @@ NetGetHostPorts()
 
   #http://www.cyberciti.biz/networking/nmap-command-examples-tutorials/
   nmap -F -Pn $aHost
-  nmap -Pn -p 80 $aHost
-  nmap -v -Pn -p 1-65536 $aHos
+  nmap -v -d -Pn -p 80 $aHost
+  nmap -v -d -Pn -p 0-65535 $aHos
+  nmap -v -d -Pn -p 0-65535 --min-parallelism 1000 94.247.62.24
 }
 
 
@@ -739,6 +782,18 @@ Hibernate()
 }
 
 
+MultipleInstance()
+{
+  Count=$(ps -eaf | grep $cApp.sh | egrep -v "grep|defunct" | wc -l)
+  if [ $Count -gt 1 ]; then
+    exit 1
+  else
+    exit 0
+  fi
+}
+
+
+
 clear
 case $1 in
     ArchUnpack)        $1 $2 $3 $4;;
@@ -781,6 +836,8 @@ case $1 in
     PkgListInst)       $1 $2 $3 $4;;
     PkgRemoveAll)      $1 $2 $3 $4;;
     PkgRemoveBad)      $1 $2 $3 $4;;
+    PkgRemoveForce)    $1 $2 $3 $4;;
+    PkgRemoveOldKernel) $1 $2 $3 $4;;
     PkgSave)           $1 $2 $3 $4;;
     PkgUpdate|pu)      PkgUpdate $2 $3 $4;;
 

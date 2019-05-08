@@ -11,10 +11,15 @@ Backup()
 
 AddUsers()
 {
-  find . | grep hello.txt | \
+  File="user.conf" 
+
+  find . | grep $File | \
   while read i; do
-    User=`grep -i -oP 'user:\s?\K(\w+$)' $i`
-    Passw=`grep -i -oP 'passw:\s?\K(\w+$)' $i`
+    source $File
+    source $i
+    #User=`grep -i -oP 'user:\s?\K(\w+$)' $i`
+    #Passw=`grep -i -oP 'passw:\s?\K(\w+$)' $i`
+
     echo "file:$i, user:$User, passw:$Passw"
     if [ "$User" -a "$Passw" ]; then
         HomeDir="/home/$User"
@@ -28,5 +33,5 @@ AddUsers()
 }
 
 
-#Backup
 AddUsers
+#Backup

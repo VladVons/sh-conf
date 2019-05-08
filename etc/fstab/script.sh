@@ -92,24 +92,27 @@ LVM()
   #--- create logical volume 'thin'
   pvesm lvmthinscan vgdata
   lvcreate -L 10G -n vol1 vgdata
-  lvconvert --type thin-pool vgdata/vol1
+  lvconvert --type thin-pool vgdata/vol1_a
 
   #--- logical volume rename
   lvrename vgdata vol1 vol3
 
   #--- logical volume resize
-  umount -l /dev/vgdata/vol1
-  e2fsck -ff /dev/vgdata/vol1
-  #lvreduce -L -4G /dev/vgdata/vol1
-  #lvresize --size -4G /dev/vgdata/vol1
-  lvresize --size +4G /dev/vgdata/vol1
-  mount /dev/vgdata/vol1
-  resize2fs /dev/vgdata/vol1
+  umount -l /dev/vgdata/vol1_a
+  e2fsck -ff /dev/vgdata/vol1_a
+  #lvreduce -L -4G /dev/vgdata/vol1_a
+  #lvresize --size -4G /dev/vgdata/vol1_a
+  lvresize --size +4G /dev/vgdata/vol1_a
+  mount /dev/vgdata/vol1_a
+  resize2fs /dev/vgdata/vol1_a
   #fsadm resize /dev/vgdata/vol1
 
+  #--- lvm-thin  resize
+  lvextend -L +10G /dev/mapper/vgdata-vol1_a
+
   #--- logical volume remove
-  umount /dev/vgdata/vol2
-  lvremove /dev/vgdata/vol2
+  umount /dev/vgdata/vol2_a
+  lvremove /dev/vgdata/vol2_a
 }
 
 

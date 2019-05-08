@@ -35,8 +35,15 @@ Init()
   Log "$0->$FUNCNAME"
 
   postfix check
+  postmap /etc/postfix/sasl_passwd
 
   #make symbol link $gDirData/mail to /var/spool/mail 
+}
+
+
+InstallEx()
+{
+  apt-get  install openssl libssl-dev
 }
 
 

@@ -21,6 +21,13 @@ TestEx()
 }
 
 
+InstallEx()
+{
+  apt-get  install openssl libssl-dev
+}
+
+
+
 # ------------------------
 clear
 case $1 in

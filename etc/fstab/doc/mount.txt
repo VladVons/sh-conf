@@ -8,6 +8,8 @@ mount -t nfs 192.168.5.11:/home/chroot/lxde-32_xenial_i386 /mnt/nfs
 
 mount -o loop path/to/iso/file/YOUR_ISO_FILE.ISO /media/iso
 
+mount --bind /mnt/hdd/data1/home /home
+
 mount -r -t ufs -o ufstype=ufs2 /dev/sdb4 /mnt/ufs
 
 convmvfs /mnt/ufsx -o allow_other -o srcdir=/mnt/ufs -o icharset=koi8-u -o ocharset=utf-8

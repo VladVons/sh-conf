@@ -19,7 +19,7 @@ MySQLBackupHosting()
   Log "$0->$FUNCNAME"
 
   cd $DIR_ADMIN/conf/pkg/service/mysql-server
-  ./script.sh DumpMask 3w_ DumpLast $gDirHosting/db_backup
+  ./script.sh DumpMask 3w_ Dump $gDirHosting/db_backup
 }
 
 

@@ -34,19 +34,6 @@ DumpUsers()
 }
 
 
-DumpLast()
-# ./script.sh DumpMask 3w_ DumpLast /var/www/enabled/db_backup
-# ------------------------
-{
-  aDBName="$1"; aHost="$2"; aDirDst="$3";
-  Log "$0->$FUNCNAME, $aDBName, $aHost, $aDirDst"
-
-  mysqldump $gAuth $gSpeedUp --host=$aHost --events --triggers --routines $aDBName | \
-     sed -r 's/ DEFINER=`[^`]+`@`[^`]+`//' | \
-     zip > $aDirDst/$aDBName.sql.zip
-}
-
-
 Dump()
 # ------------------------
 {
