@@ -9,8 +9,8 @@ mc
 
 #--- info
 htop
-iftop
-iotop
+#iftop
+#iotop
 
 #--- ups
 apcupsd
@@ -25,7 +25,7 @@ lm-sensors
 
 #--- services
 #fail2ban
-monit
+#monit
 
 #--- HDD services
 smartmontools
@@ -48,7 +48,7 @@ lynx
 #git
 rsync
 axel
-wput
+#wput
 wget
 
 #--- misc
@@ -60,5 +60,6 @@ hardinfo
 #--- archiver
 zip
 unzip
+p7zip-full
 rar
 unrar

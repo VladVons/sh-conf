@@ -1,0 +1,52 @@
+#---
+# Raspberry NAS
+# VladVons@gmail.com
+#---
+
+
+##--- File share
+#nfs-kernel-server
+pure-ftpd
+samba
+samba-vfs-modules
+cifs-utils
+#winbind
+#tftpd-hpa
+rsync
+ntfs-3g
+
+
+#--- Mail
+ssmtp
+mailutils
+openssl
+libssl-dev
+
+
+##--- HDD
+#smartmontools
+#parted
+
+
+##--- Archiver
+zip
+unzip
+#p7zip-full
+
+
+##--- Misc
+mc
+monit
+apache2 libapache2-mod-php
+#transmission-daemon
+#minidlna
+lynx
+#wput
+wget
+screen
+locate
+lsof
+
+
+##--- PPA need
+webmin

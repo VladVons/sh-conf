@@ -1,0 +1,3 @@
+# Virtual.
+PreInstall()  { :; }
+PostInstall() { :; }
