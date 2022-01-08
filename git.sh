@@ -1,10 +1,16 @@
 #!/bin/bash
 
 
+User="VladVons"
+Mail="vladvons@gmail.com"
+Url="https://github.com/$User/sh-conf.git"
+
+
 GitAuth()
 {
   # sign with eMail 1
-  git config --global user.email "vladvons@gmail.com"
+  git config --global user.email $Mail
+  git config --global user.name $User
 
   # no password.
   git config --global credential.helper 'cache --timeout=360000'
